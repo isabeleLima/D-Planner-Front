@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&family=Roboto:wght@400;500&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.imageLogin {
+    width: 411px;
+}
+
+.loginForm {
+    background-color: #03A89E;
+}
+
+.textLogin {
+    font-family: 'Roboto', sans-serif;
+    color: #03A89E;
+    text-align: center;
+}
+
+.logoForm {
+    width: 100px;
+}
+
+.textInput {
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-weight: 400;
+    font-size: 15px;
+    background: transparent;
+    color: white;
+    width: 90%;
+}
+
+.textInput:focus {
+    outline: none !important;
+}
+
+::placeholder {
+    color: white;
+}
+
+.Loginbutton {
+    font-size: 18px;
+    color: #03A89E;
+    background-color: #fff;
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    width: 80%;
+}
+
+.loginForm p {
+    color: white;
+}
+.loginForm a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 570;
+}
+.loginForm a:hover{
+    color:#263238;
+}
