@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&family=Roboto:wght@400;500&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.backgroundNavbar{
+    background: #03A89E;
+    color: white;
+}
+
+.backgroundNavbar li a{
+   text-decoration: none;
+    color: white;
+}
+.topGreen{
+    background: #03A89E;
+    height: 150px;
+}
+
+.calendar{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.blueBorder{
+    border: 4px solid #2695FB;
+    color: #2695FB;
+    cursor: pointer;
+}
+.modalBluetask{
+    color: #2695FB;
+}
+.blueButton{
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #fff;
+    background: #2695FB;
+}
+.logoCalendar{
+    width: 70px;
+    height: 70px;
+    background: #2695FB url("../images/calendario.png") no-repeat center;
+    background-size: 30px;
+    border-radius: 50%;
+}
+
+.textLogin {
+    font-family: 'Roboto', sans-serif;
+    color: #03A89E;
+    text-align: center;
+}
+
+.textInput {
+    border: none;
+    border-bottom: 1px solid #2695FB;
+    font-weight: 400;
+    font-size: 15px;
+    background: transparent;
+    color: #2695FB;
+    width: 100%;
+}
+
+.dataInput {
+    border: none;
+    border-bottom: 1px solid #2695FB;
+    font-weight: 400;
+    font-size: 15px;
+    background: transparent;
+    color: #2695FB;
+    width: 70%;
+    cursor: pointer;
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.blueText {
+    color: #2695FB;
+}
+
+.textInput:focus {
+    outline: none !important;
+}
+
+.dataInput:focus {
+    outline: none !important;
+}
+
+::placeholder {
+    color: #2695FB;
+}
+
+.semestreButton {
+    font-size: 18px;
+    color: #fff;
+    background-color: #2695FB;
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    width: 40%;
+}
