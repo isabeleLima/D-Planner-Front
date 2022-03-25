@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&family=Roboto:wght@400;500&display=swap');
+
+html,
+body {
+	height: 100%;
+}
+
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
+.backgroundNavbar {
+	background: #03a89e;
+	color: white;
+}
+
+.backgroundNavbar li a {
+	text-decoration: none;
+	color: white;
+}
+.topGreen {
+	background: #03a89e;
+	height: 150px;
+}
+
+.calendar {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.icon {
+	width: 70px;
+	height: 70px;
+	border-radius: 70px;
+	display: flex;
+}
+.icon.apresentacao {
+	background: #03a89e url('../images/trabalho.png') no-repeat center;
+	background-size: 30px;
+}
+.icon.atividade {
+	background: #ff6103 url('../images/atividade.png') no-repeat center;
+	background-size: 30px;
+}
+.icon.avaliacao {
+	background: #cd3700 url('../images/avaliacao.png') no-repeat center;
+	background-size: 30px;
+}
+.icon.historico {
+	background: #979797 url('../images/atividade.png') no-repeat center;
+	background-size: 30px;
+}
+
+.link {
+	text-decoration: none;
+	transition: box-shadow 0.1s;
+}
+.link:hover {
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+.link.apresentacao {
+	color: #03a89e;
+}
+.link.atividade {
+	color: #ff6103;
+}
+.link.avaliacao {
+	color: #cd3700;
+}
+.link.historico {
+	color: #979797;
+}
