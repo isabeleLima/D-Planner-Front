@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&family=Roboto:wght@400;500&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+.orangeBorder{
+    border: 4px solid #FF6103;
+    color: #FF6103;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.orangeBorder:hover{
+    transform: scale(1.02);
+}
+
+.orangeBorder p {
+    text-align: left;
+}
+
+.logoCalendar{
+    width: 70px;
+    height: 70px;
+    background: #FF6103 url("../images/atividade.png") no-repeat center;
+    background-size: 30px;
+    border-radius: 50%;
+}
+
+.textLogin {
+    font-family: 'Roboto', sans-serif;
+    color: #FF6103;
+    text-align: center;
+}
+
+.textInput {
+    border: none;
+    border-bottom: 1px solid #FF6103;
+    font-weight: 400;
+    font-size: 13px;
+    background: transparent;
+    color: #FF6103;
+    width: 100%;
+    transition-duration: 0.3s;
+
+}
+
+.textInput:focus {
+    outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.dataInput {
+    border: none;
+    border-bottom: 1px solid #FF6103;
+    font-weight: 400;
+    font-size: 13px;
+    background: transparent;
+    color: #FF6103;
+    width: 70%;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+}
+
+.dataInput:focus {
+    outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.orangeText {
+    color: #FF6103;
+}
+
+.textInput:focus {
+    outline: none !important;
+}
+
+.dataInput:focus {
+    outline: none !important;
+}
+
+::placeholder {
+    color: #FF6103;
+}
+
+.cadastrarButton {
+    font-size: 18px;
+    color: #fff;
+    background-color: #FF6103;
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    width: 40%;
+    transition-duration: 0.3s;
+}
+
+.cadastrarButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.orangeButton{
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #fff;
+    background: #FF6103;
+    transition-duration: 0.3s;
+}
+
+.orangeButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}

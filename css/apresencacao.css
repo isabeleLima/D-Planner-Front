@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&family=Roboto:wght@400;500&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+.greenBorder{
+    border: 4px solid #03A89E;
+    color: #03A89E;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.greenBorder:hover{
+    transform: scale(1.02);
+}
+
+.greenBorder p {
+    text-align: left;
+}
+
+.logoCalendar{
+    width: 70px;
+    height: 70px;
+    background: #03A89E url("../images/trabalho.png") no-repeat center;
+    background-size: 30px;
+    border-radius: 50%;
+}
+
+.textLogin {
+    font-family: 'Roboto', sans-serif;
+    color: #03A89E;
+    text-align: center;
+}
+
+.textInput {
+    border: none;
+    border-bottom: 1px solid #03A89E;
+    font-weight: 400;
+    font-size: 13px;
+    background: transparent;
+    color: #03A89E;
+    width: 100%;
+    transition-duration: 0.3s;
+
+}
+
+.textInput:focus {
+    outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.dataInput {
+    border: none;
+    border-bottom: 1px solid #03A89E;
+    font-weight: 400;
+    font-size: 13px;
+    background: transparent;
+    color: #03A89E;
+    width: 70%;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+}
+
+.dataInput:focus {
+    outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.greenText {
+    color: #03A89E;
+}
+
+.textInput:focus {
+    outline: none !important;
+}
+
+.dataInput:focus {
+    outline: none !important;
+}
+
+::placeholder {
+    color: #03A89E;
+}
+
+.cadastrarButton {
+    font-size: 18px;
+    color: #fff;
+    background-color: #03A89E;
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    width: 40%;
+    transition-duration: 0.3s;
+}
+
+.cadastrarButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.greenButton{
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #fff;
+    background: #03A89E;
+    transition-duration: 0.3s;
+}
+
+.greenButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
