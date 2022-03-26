@@ -5,36 +5,42 @@
     <meta charset="utf-8">
     <title>D-Planner Home</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/calendar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container-fluid p-0">
-        <nav class="navbar  navbar-expand-lg backgroundNavbar mb-5">
+        <nav class="navbar navbar-expand-lg backgroundNavbar mb-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand navLogo" href="./home.html">
                     <img src="../images/logo.png" alt="" width="40">
+                    D-PLANNER
                 </a>
-                <div class="d-flex justify-content-end">
-                    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">HOME</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">SEMESTRE</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">MATERIAS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">ATIVIDADES</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNavDropdown">
 
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item navItem">
+                            <a class="nav-link active" aria-current="page" href="./home.html">HOME</a>
+                        </li>
+                        <li class="nav-item navItem">
+                            <a class="nav-link" href="./semestres.html">SEMESTRE</a>
+                        </li>
+                        <li class="nav-item navItem">
+                            <a class="nav-link" href="./cadeiras.html">CADEIRA</a>
+                        </li>
+                        <li class="nav-item navItem">
+                            <a class="nav-link" href="./atividade.html">ATIVIDADES</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <div class="container calendar pb-4 ">
@@ -44,7 +50,7 @@
                 </div>
             </div>
             <div class="row ">
-                <div class="col-12 pageCalendar rounded-bottom pt-4">
+                <div class="col-12 rounded-bottom pt-4">
                     <div class="w-100 mx-auto rounded redTask p-2 mb-3" data-bs-toggle="modal"
                         data-bs-target="#RedModal">
                         <div class="hstack gap-4">
@@ -74,19 +80,19 @@
                         </div>
                     </div>
                     <div class="w-100 mx-auto rounded greenTask p-2 mb-3" data-bs-toggle="modal"
-                    data-bs-target="#GreenModal">
-                    <div class="hstack gap-4">
-                        <div class="logoGreenTask "></div>
-                        <h4>1 dia</h4>
-                        <h3>NOME DA CADEIRA</h3>
-                        <p class=" w-50 text-break ms-auto">
-                            Mussum Ipsum, cacilds vidis litro abertis.
-                            Detraxit consequat et quo num tendi nada.
-                            Cevadis im ampola pa arma uma pindureta.Leite de capivaris,
-                            leite de mula
-                        </p>
+                        data-bs-target="#GreenModal">
+                        <div class="hstack gap-4">
+                            <div class="logoGreenTask "></div>
+                            <h4>1 dia</h4>
+                            <h3>NOME DA CADEIRA</h3>
+                            <p class=" w-50 text-break ms-auto">
+                                Mussum Ipsum, cacilds vidis litro abertis.
+                                Detraxit consequat et quo num tendi nada.
+                                Cevadis im ampola pa arma uma pindureta.Leite de capivaris,
+                                leite de mula
+                            </p>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

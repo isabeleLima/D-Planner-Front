@@ -10,29 +10,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.backgroundNavbar{
-    background: #03A89E;
-    color: white;
-}
-
-.backgroundNavbar li a{
-   text-decoration: none;
-    color: white;
-}
-.topGreen{
-    background: #03A89E;
-    height: 150px;
-    
-}
-.calendar{
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-
 .redTask{
     border: 4px solid #CD3700;
     color: #CD3700;
     cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.redTask:hover{
+    transform: scale(1.02);
 }
 .modalRedtask{
     color: #CD3700;
@@ -45,6 +31,12 @@ body {
     width: 100%;
     color: #fff;
     background: #CD3700;
+    font-weight: 500;
+    transition-duration: 0.3s;
+}
+.RedTaskButton:hover{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .logoRedTask{
     width: 70px;
@@ -54,10 +46,15 @@ body {
     border-radius: 50%;
 }
 
+
 .orangeTask{
     border: 4px solid #FF6103;
     color: #FF6103;
     cursor: pointer;
+    transition-duration: 0.3s;
+}
+.orangeTask:hover{
+    transform: scale(1.02);
 }
 .modalOrangetask{
     color: #FF6103;
@@ -70,6 +67,12 @@ body {
     width: 100%;
     color: #fff;
     background: #FF6103;
+    font-weight: 500;
+    transition-duration: 0.3s;
+}
+.orangeTaskButton:hover{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .logoOrangeTask{
     width: 70px;
@@ -79,10 +82,16 @@ body {
     border-radius: 50%;
 }
 
+
 .greenTask{
     border: 4px solid #03A89E;
     color: #03A89E;
     cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.greenTask:hover{
+    transform: scale(1.02);
 }
 .modalGreentask{
     color: #03A89E;
@@ -95,6 +104,12 @@ body {
     width: 100%;
     color: #fff;
     background: #03A89E;
+    font-weight: 500;
+    transition-duration: 0.3s;
+}
+.greenTaskButton:hover{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .logoGreenTask{
     width: 70px;
