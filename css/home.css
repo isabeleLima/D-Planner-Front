@@ -10,15 +10,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.backgroundNavbar{
-    background: #03A89E;
-    color: white;
-}
 
-.backgroundNavbar li a{
-   text-decoration: none;
-    color: white;
-}
 .topGreen{
     background: #03A89E;
     height: 150px;
