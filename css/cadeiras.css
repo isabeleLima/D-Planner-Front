@@ -32,6 +32,11 @@ body {
     color: #483D8B;
     cursor: pointer;
 }
+
+.purpleText{
+    color: #483D8B;
+}
+
 .modalPurpletask{
     color: #483D8B;
 }
