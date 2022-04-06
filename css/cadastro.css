@@ -4,26 +4,19 @@ html,
 body {
     height: 100%;
 }
-
-
 * {
     font-family: 'Roboto', sans-serif;
 }
 
-.imageLogin {
-    width: 411px;
-}
-
-.loginForm {
-    background-color: #03A89E;
-}
-
-.textLogin {
+.ApresentationRegister {
     font-family: 'Roboto', sans-serif;
     color: #03A89E;
     text-align: center;
 }
 
+.FormBackground {
+    background-color: #03A89E;
+}
 .logoForm {
     width: 100px;
 }
@@ -47,11 +40,10 @@ body {
     font-size: 15px;
 }
 
-
 ::placeholder {
     color: white;
 }
-.Loginbutton {
+.WhiteButton {
     text-decoration: none;
     text-align: center;
     font-size: 18px;
@@ -65,7 +57,7 @@ body {
     transition-duration: 0.3s;
 }
 
-.Loginbutton:hover{
+.WhiteButton:hover{
     color: #03A89E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
