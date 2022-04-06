@@ -21,13 +21,7 @@ body {
 .purpleTask{
     border: 4px solid #483D8B;
     color: #483D8B;
-    cursor: pointer;
     text-decoration: none;
-    transition-duration: 0.3s;
-}
-
-.purpleTask:hover{
-    transform: scale(1.02);
 }
 
 .purpleText{
@@ -61,6 +55,7 @@ body {
     border: none;
     padding: 5px;
     background: transparent;
+    cursor: pointer;
 }
 
 .logoPurpleTask{
