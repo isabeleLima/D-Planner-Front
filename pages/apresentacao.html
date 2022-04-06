@@ -52,55 +52,33 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-7 col-sm-12 col-12 pageCalendar rounded-bottom pt-4">
+                <div class="col-md-12 col-sm-12 col-12 pageCalendar rounded-bottom pt-4">
+                    <button type="button" class="greenButton w-100 mb-3" data-bs-toggle="modal"
+                        data-bs-target="#addModal">ADICIONAR NOVA APRESENTAÇÃO
+                    </button>
                     <div class="w-100 mx-auto rounded greenBorder p-2 mb-3" data-bs-toggle="modal"
                         data-bs-target="#greenModal">
                         <div class="hstack gap-3">
                             <div class="d-flex justify-content-start logoCalendar"></div>
                             <h4>1 dia </h4>
-                            <h3>NOME DA CADEIRA</h3>
+                            <h5>NOME DA CADEIRA</h5>
+                            <button data-bs-toggle="modal" class="editButton ms-auto" data-bs-target="#editModal">
+                                <img src="../images/editApresentacao.png" height=35>
+                            </button>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-5 col-sm-12 col-12 justify-content-center">
-                    <form class="mt-3 p-5 ">
-                        <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
-                                placeholder="NOME DA APRESENTAÇÃO"></div>
-
-                        <div class="mb-5 d-flex justify-content-end">
-                            <select name="CADEIRA" class="textInput">
-                                <option value="valor1" selected>NOME DA CADEIRA</option>
-                                <option value="valor2" >NOME DA CADEIRA</option>
-                                <option value="valor3">NOME DA CADEIRA</option>
-                          </select>
-                        </div>
-
-                        <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
-                            placeholder="DESCRIÇÃO"></div>
-
-                        <div class="mb-5 d-flex justify-content-between">
-                            <label for="dataIni" class="greenText">PRAZO DE ENTREGA</label>
-                            <input class="dataInput" type="date" id="dataIni" name="dataIni">
-                        </div>
-
-                        <div class="mb-5 d-flex justify-content-center"><button
-                                class="cadastrarButton">CADASTRAR</button>
-                        </div>
-
-                    </form>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="modal fade" id="greenModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-md modalRedtask">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="hstack gap-4">
                         <div class="logoCalendar"></div>
-                        <h3 class="greenText">SEMESTRE</h3>
+                        <h4>NOME DA APRESENTAÇÃO</h4>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -108,18 +86,18 @@
                         <form class="mt-3 p-5 ">
                             <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
                                     placeholder="NOME DA APRESENTAÇÃO"></div>
-    
+
                             <div class="mb-5 d-flex justify-content-end">
                                 <select name="CADEIRA" class="textInput">
                                     <option value="valor1" selected>NOME DA CADEIRA</option>
-                                    <option value="valor2" >NOME DA CADEIRA</option>
+                                    <option value="valor2">NOME DA CADEIRA</option>
                                     <option value="valor3">NOME DA CADEIRA</option>
-                              </select>
+                                </select>
                             </div>
-    
+
                             <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
-                                placeholder="DESCRIÇÃO"></div>
-    
+                                    placeholder="DESCRIÇÃO"></div>
+
                             <div class="mb-5 d-flex justify-content-between">
                                 <label for="dataIni" class="greenText">PRAZO DE ENTREGA</label>
                                 <input class="dataInput" type="date" id="dataIni" name="dataIni">
@@ -129,6 +107,45 @@
                     <div class="modal-footer">
                         <button type="button" class="greenButton">ATUALIZAR</button>
                         <button type="button" class="greenButton">EXCLUIR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md modalRedtask">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="hstack gap-4">
+                        <div class="logoCalendar"></div>
+                        <h4>NOVA APRESENTAÇÃO</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form class="p-5 ">
+                            <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
+                                    placeholder="NOME DA APRESENTAÇÃO"></div>
+
+                            <div class="mb-5 d-flex justify-content-end">
+                                <select name="CADEIRA" class="textInput">
+                                    <option value="valor1" selected>NOME DA CADEIRA</option>
+                                    <option value="valor2">NOME DA CADEIRA</option>
+                                    <option value="valor3">NOME DA CADEIRA</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
+                                    placeholder="DESCRIÇÃO"></div>
+
+                            <div class="mb-5 d-flex justify-content-between">
+                                <label for="dataIni" class="greenText">PRAZO DE ENTREGA</label>
+                                <input class="dataInput" type="date" id="dataIni" name="dataIni">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="greenButton">CADASTRAR</button>
                     </div>
                 </div>
             </div>
