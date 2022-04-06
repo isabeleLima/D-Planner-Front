@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/cadeiras.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/calendar.css">
@@ -52,65 +53,111 @@
                 </div>
             </div>
             <div class="row ">
-                <div class="col-md-6 col-sm-12 pageCalendar rounded-bottom pt-4">
-                    <div class="w-100 mx-auto rounded purpleTask p-2 mb-3" data-bs-toggle="modal"
-                        data-bs-target="#PurpleModal">
+
+                <div class="col-md-12 col-sm-12 pageCalendar rounded-bottom pt-4">
+                    <button type="button" class="purpleTaskButton w-100 mb-3" data-bs-toggle="modal"
+                        data-bs-target="#AddCadeira">Adicionar nova Cadeira
+                    </button>
+                    <div class="w-100 mx-auto rounded purpleTask p-2 mb-3" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample">
                         <div class="hstack gap-4">
                             <div class="logoPurpleTask "></div>
-                            <h3>NOME DA CADEIRA</h3>
-                            <h5>Nome do professor</h5>
+                            <h4>NOME DA CADEIRA</h4>
+                            <h6>Nome do professor</h6>
+                            <button data-bs-toggle="modal" class="editButton ms-auto" data-bs-target="#EditCadeira">
+                                <img src="../images/editCadeira.png" height=35>
+                            </button>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12  cadeirasForm justify-content-center">
-                    <form class="mt-3 p-5 ">
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="NOME DA CADEIRA"></div>
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="PROFESSOR"></div>
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="SEMESTRE"></div>
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="STATUS"></div>
-                        <div class="mb-5 d-flex justify-content-center"><button
-                                class="cadeirasButton">CADASTRAR</button>
-                        </div>
+                        <a style="text-decoration: none;" href="./cadeiras.html">
+                            <div class="collapse mt-3" id="collapseExample">
+                                <div class="w-100 mx-auto rounded redTask p-2 mb-3" data-bs-toggle="modal"
+                                    data-bs-target="#RedModal">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 mb-3">
+                                                <div class="hstack gap-4 mx-auto">
+                                                    <div class="logoRedTask "></div>
+                                                    <h4>1 dia</h4>
+                                                    <h3>NOME DA CADEIRA</h3>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <p class="text-break ms-auto">
+                                                    Mussum Ipsum, cacilds vidis litro abertis.
+                                                    Detraxit consequat et quo num tendi nada.
+                                                    Cevadis im ampola pa arma uma pindureta.Leite de capivaris,
+                                                    leite de mula
+                                                </p>
+                                            </div>
 
-                    </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="modal fade" id="PurpleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modalRedtask">
+    <div class="modal fade" id="AddCadeira" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md modalRedtask">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="hstack gap-4 ">
+                    <div class="hstack gap-4">
                         <div class="logoPurpleTask"></div>
-                        <h3 class="purpleText">NOME DA CADEIRA</h3>
+                        <h4 class="purpleText">NOVA CADEIRA</h4>
                     </div>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="NOME DA CADEIRA"></div>
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="PROFESSOR"></div>
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="SEMESTRE"></div>
-                        <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text"
-                                placeholder="STATUS"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="purpleTaskButton">ATUALIZAR</button>
-                        <button type="button" class="purpleTaskButton">EXCLUIR</button>
+                        <form class="p-4">
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="NOME DA CADEIRA"></div>
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="PROFESSOR"></div>
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="SEMESTRE"></div>
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="STATUS"></div>
+                            <button type="button" class="purpleTaskButton">CADASTRAR</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="EditCadeira" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md modalRedtask">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="hstack gap-4">
+                        <div class="logoPurpleTask"></div>
+                        <h4 class="purpleText">NOME DA CADEIRA</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form class="p-4">
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="NOME DA CADEIRA"></div>
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="PROFESSOR"></div>
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="SEMESTRE"></div>
+                            <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
+                                    placeholder="STATUS"></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="purpleTaskButton">ATUALIZAR</button>
+                    <button type="button" class="purpleTaskButton">EXCLUIR</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">

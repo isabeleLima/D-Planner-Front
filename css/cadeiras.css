@@ -4,8 +4,6 @@ html,
 body {
     height: 100%;
 }
-
-
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -24,6 +22,12 @@ body {
     border: 4px solid #483D8B;
     color: #483D8B;
     cursor: pointer;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+.purpleTask:hover{
+    transform: scale(1.02);
 }
 
 .purpleText{
@@ -41,7 +45,24 @@ body {
     width: 100%;
     color: #fff;
     background: #483D8B;
+    transition-duration: 0.3s;
 }
+
+.purpleTaskButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.editButton{
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    background: transparent;
+}
+
 .logoPurpleTask{
     width: 70px;
     height: 70px;
@@ -56,30 +77,23 @@ body {
     text-align: center;
 }
 
-.textInput {
+.CadeiratextInput {
     border: none;
     border-bottom: 1px solid #483D8B;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 13px;
     background: transparent;
     color: #483D8B;
     width: 90%;
+    transition-duration: 0.3s;
 }
 
-.textInput:focus {
+.CadeiratextInput:focus {
     outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
 }
 
 ::placeholder {
     color: #483D8B;
-}
-
-.cadeirasButton {
-    font-size: 18px;
-    color: #fff;
-    background-color: #483D8B;
-    border-radius: 3px;
-    border: none;
-    padding: 5px;
-    width: 40%;
 }
