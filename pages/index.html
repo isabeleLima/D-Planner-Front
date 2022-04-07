@@ -29,13 +29,16 @@
                         <img class="logoForm" src="../images/logo.png">
                     </div>
                 <form class="mt-3 p-5 ">
-                    <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="text" placeholder="EMAIL"></div>
-                    <div class="mb-5 d-flex justify-content-center"><input class="textInput" type="password" placeholder="SENHA"></div>
-                    <div class="mb-5 d-flex justify-content-center"><a class="WhiteButton" href="home.html">LOGIN</a></div>
+                    <div class="mb-5 d-flex justify-content-center"><input id="email" class="textInput" type="text" placeholder="EMAIL"></div>
+                    <div class="mb-5 d-flex justify-content-center"><input id="password" class="textInput" type="password" placeholder="SENHA"></div>
+                    <div class="mb-5 d-flex justify-content-center"><a onclick="tryToLogin()" class="WhiteButton">LOGIN</a></div>
                 </form>
                 <div class="mt-auto d-flex justify-content-center"><p>Não tem uma conta? <a class="FormBackgroundLink" href="cadastro.html">Cadastre-se</a></p></div>
             </div>
         </div>
     </div>
 </body>
+<script type="application/javascript" src="../js/verifyLogin.js">
+    
+</script>
 </html>
