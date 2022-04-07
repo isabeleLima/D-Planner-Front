@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,21 +99,21 @@
                     <div class="container-fluid">
                         <form class="p-4">
                             <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
-                                    placeholder="SEMESTRE"></div>
+                                    placeholder="SEMESTRE" id="nome-att" name="nome-att"></div>
 
                             <div class="mb-5 d-flex justify-content-between">
                                 <label for="dataIni" class="blueText">DATA DE INÍCIO</label>
-                                <input class="dataInput" type="date" id="dataIni" name="dataIni">
+                                <input class="dataInput" type="date" id="dataIni-att" name="dataIni-att">
                             </div>
 
                             <div class="mb-5 d-flex justify-content-between">
                                 <label for="dataFim" class="blueText">DATA FINAL</label>
-                                <input class="dataInput" type="date" id="dataFim" name="dataFim">
+                                <input class="dataInput" type="date" id="dataFim-att" name="dataFim-att">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="blueButton">ATUALIZAR</button>
+                        <button type="button" class="blueButton" onclick="attSemestre()">ATUALIZAR</button>
                         <button type="button" class="blueButton">EXCLUIR</button>
                     </div>
                 </div>
@@ -136,29 +134,31 @@
                     <div class="container-fluid">
                         <form class="p-4">
                             <div class="mb-5 d-flex justify-content-end"><input class="textInput" type="text"
-                                    placeholder="SEMESTRE"></div>
+                                    placeholder="SEMESTRE" id="nome-cad" name="nome-cad"></div>
 
                             <div class="mb-5 d-flex justify-content-between">
                                 <label for="dataIni" class="blueText">DATA DE INÍCIO</label>
-                                <input class="dataInput" type="date" id="dataIni" name="dataIni">
+                                <input class="dataInput" type="date" id="dataIni-cad" name="dataIni-cad">
                             </div>
 
                             <div class="mb-5 d-flex justify-content-between">
                                 <label for="dataFim" class="blueText">DATA FINAL</label>
-                                <input class="dataInput" type="date" id="dataFim" name="dataFim">
+                                <input class="dataInput" type="date" id="dataFim-cad" name="dataFim-cad">
                             </div>
 
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="blueButton">CADASTRAR</button>
+                    <button type="button" class="blueButton" onclick="cadSemestre()">CADASTRAR</button>
                 </div>
             </div>
         </div>
     </div>
 
 </body>
+<script type="application/javascript" src="../js/verifySemester.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>

@@ -80,7 +80,7 @@
                                                 <div class="hstack gap-4 mx-auto">
                                                     <div class="logoRedTask "></div>
                                                     <h4>1 dia</h4>
-                                                    <h3>NOME DA CADEIRA</h3>
+                                                    <h3>AVALIAÇÃO</h3>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -116,19 +116,19 @@
                     <div class="container-fluid">
                         <form class="p-4">
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="NOME DA CADEIRA"></div>
+                                    placeholder="NOME DA CADEIRA" id="cadeira-cad" name="cadeira-cad"></div>
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="PROFESSOR"></div>
+                                    placeholder="PROFESSOR" id="prof-cad" name="prof-cad"></div>
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="SEMESTRE"></div>
+                                    placeholder="SEMESTRE" id="semestre-cad" name="semestre-cad"></div>
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="STATUS"></div>
+                                    placeholder="STATUS" id="status-cad" name="status-cad"></div>
 
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="purpleTaskButton">CADASTRAR</button>
+                    <button type="button" class="purpleTaskButton" onclick="cadCadeira()">CADASTRAR</button>
                 </div>
             </div>
         </div>
@@ -146,24 +146,26 @@
                     <div class="container-fluid">
                         <form class="p-4">
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="NOME DA CADEIRA"></div>
+                                    placeholder="NOME DA CADEIRA" id="cadeira-att" name="cadeira-att"></div>
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="PROFESSOR"></div>
+                                    placeholder="PROFESSOR" id="prof-att" name="prof-att"></div>
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="SEMESTRE"></div>
+                                    placeholder="SEMESTRE" id="semestre-att" name="semestre-att"></div>
                             <div class="mb-5 d-flex justify-content-center"><input class="CadeiratextInput" type="text"
-                                    placeholder="STATUS"></div>
+                                    placeholder="STATUS" id="status-att" name="status-att"></div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="purpleTaskButton">ATUALIZAR</button>
+                    <button type="button" class="purpleTaskButton" onclick="attCadeira()">ATUALIZAR</button>
                     <button type="button" class="purpleTaskButton">EXCLUIR</button>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script type="application/javascript" src="../js/verifySubjects.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>
