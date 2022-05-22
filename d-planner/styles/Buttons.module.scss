@@ -1,0 +1,94 @@
+@import "./colors.module.scss";
+
+.WhiteButton {
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    color: $greenColor;
+    background-color: #fff;
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    width: 80%;
+    font-weight: 500;
+    transition-duration: 0.3s;
+}
+.WhiteButton:hover{
+    color: $greenColor;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.redButton{
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #fff;
+    background: $redColor;
+    transition-duration: 0.3s;
+}
+
+.redButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.greenButton{
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #fff;
+    background: $greenColor;
+    transition-duration: 0.3s;
+}
+
+.greenButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.orangeButton{
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #fff;
+    background: $orangeColor;
+    transition-duration: 0.3s;
+}
+
+.orangeButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.blueButton{
+    text-decoration: none;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    color: #fff;
+    background: $blueColor;
+    transition-duration: 0.3s;
+}
+
+.blueButton:hover{
+    color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}

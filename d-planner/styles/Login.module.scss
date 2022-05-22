@@ -1,0 +1,32 @@
+@import "./colors.module.scss";
+
+
+.Container{
+    height: 100vh;
+}
+.ApresentationLogin {
+    font-family: 'Roboto', sans-serif;
+    color: $greenColor ;
+    text-align: center;
+}
+
+.FormBackground {
+    background-color: $greenColor;
+}
+.logoForm {
+    width: 200px;
+}
+
+.FormBackground p {
+    color: #e3e3e3;;
+}
+.FormBackgroundLink{
+    text-decoration: none;
+    color: #e3e3e3;
+    font-weight: 570;
+    transition-duration: 0.3s;
+}
+.FormBackgroundLink:hover{
+    color:#fff;
+}
+
