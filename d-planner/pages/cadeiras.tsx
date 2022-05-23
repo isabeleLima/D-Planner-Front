@@ -1,8 +1,8 @@
 import { Col, Container, Row, Stack, Form } from "react-bootstrap";
 import Header from "../components/Header";
-import Semester from "../components/Semester";
+import CadeiraWithActivites from "../components/CadeiraWithActivites";
 import style from "../styles/Calendar.module.scss";
-export default function Login() {
+export default function Cadeiras() {
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -16,7 +16,8 @@ export default function Login() {
 
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-           <Semester></Semester>
+           <CadeiraWithActivites></CadeiraWithActivites>
+           <CadeiraWithActivites></CadeiraWithActivites>
           </Col>
         </Row>
       </Container>

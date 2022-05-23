@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
-import style from "../../styles/tasks/OrangeTask.module.scss";
-import OrangeButton from "../buttons/OrangeButton";
-import { Container, Row, Col, Stack, Modal,Accordion  } from "react-bootstrap";
+import style from "../../styles/tasks/GrayTask.module.scss";
+import { Container, Row, Col, Stack, Modal,Accordion } from "react-bootstrap";
 
-export default function OrangeTask() {
+
+
+export default function GrayTask() {
+ 
   return (
     <>
-      <Accordion defaultActiveKey="0" className="mb-2">
+       <Accordion defaultActiveKey="0" className="mb-2">
         <Accordion.Item eventKey="1" bsPrefix="danger" className={style.Task}>
           <Accordion.Header>
             <Stack direction="horizontal" gap={4} className={style.Color}>
               <div className={style.logoTask}></div>
-              <h4>1 dia</h4>
+              <h4>perdido</h4>
               <h6>3° AVALIAÇÃO</h6>
               <h6 className="d-none d-sm-block">PROGRAMAÇÃO WEB</h6>
             </Stack>
@@ -23,9 +25,6 @@ export default function OrangeTask() {
               quo num tendi nada. Cevadis im ampola pa arma uma pindureta.Leite
               de capivaris, leite de mula
             </p>
-            <div className="d-flex justify-content-start  mb-2">
-              <OrangeButton Title="CONCLUIR"></OrangeButton>
-            </div>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

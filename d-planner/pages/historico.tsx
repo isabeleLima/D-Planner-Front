@@ -3,8 +3,9 @@ import Header from "../components/Header";
 import RedTask from "../components/task/RedTask";
 import OrangeTask from "../components/task/OrangeTask";
 import GreenTask from "../components/task/GreenTask";
+import GrayTask from "../components/task/GrayTask";
 import style from "../styles/Calendar.module.scss";
-export default function Home() {
+export default function Historico() {
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -19,8 +20,10 @@ export default function Home() {
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
             <RedTask></RedTask>
+            <GrayTask></GrayTask>
             <OrangeTask></OrangeTask>
             <GreenTask></GreenTask>
+            <GrayTask></GrayTask>
           </Col>
         </Row>
       </Container>

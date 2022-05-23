@@ -1,21 +1,21 @@
 @import "../colors.module.scss";
 .Task{
-    border: 1px solid $orangeColor;
-    color: $orangeColor;
+    border: 1px solid $grayColor;
+    color: $grayColor;
     cursor: pointer;
     transition-duration: 0.3s;
 }
 .Color{
-    color: $orangeColor;
+    color: $grayColor;
 }
 .modaltask{
-    color: $orangeColor;
+    color: $grayColor;
 }
 
 .logoTask{
     width: 60px;
     height: 60px;
-    background: $orangeColor url("../../public/atividade.png") no-repeat center;
+    background: $grayColor url("../../public/trabalho.png") no-repeat center;
     background-size: 30px;
     border-radius: 50%;
 }

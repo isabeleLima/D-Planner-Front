@@ -1,0 +1,17 @@
+@import "./colors.module.scss";
+
+.apresentacao {
+	color: $greenColor;
+}
+.atividade {
+	color: $orangeColor;
+}
+.avaliacao {
+	color: $redColor;
+}
+.historico {
+	color: $grayColor;
+}
+.cursor{
+	cursor: pointer;
+}

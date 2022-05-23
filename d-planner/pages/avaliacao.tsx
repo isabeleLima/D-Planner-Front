@@ -1,10 +1,8 @@
 import { Col, Container, Row, Stack, Form } from "react-bootstrap";
 import Header from "../components/Header";
 import RedTask from "../components/task/RedTask";
-import OrangeTask from "../components/task/OrangeTask";
-import GreenTask from "../components/task/GreenTask";
 import style from "../styles/Calendar.module.scss";
-export default function Home() {
+export default function Semesters() {
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -18,9 +16,9 @@ export default function Home() {
 
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            <RedTask></RedTask>
-            <OrangeTask></OrangeTask>
-            <GreenTask></GreenTask>
+          <RedTask></RedTask>
+          <RedTask></RedTask>
+          <RedTask></RedTask>
           </Col>
         </Row>
       </Container>
