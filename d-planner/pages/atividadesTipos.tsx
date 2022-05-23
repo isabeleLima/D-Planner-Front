@@ -18,7 +18,7 @@ export default function atividadeTipo() {
         {/* apresentação */}
         <Row className={"mt-3"}>
           <Col className={"col-12 col-md-6 mt-2 " + atividades.cursor}>
-            <Link href="/home" passHref>
+            <Link href="/apresentacao" passHref>
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image
@@ -46,7 +46,7 @@ export default function atividadeTipo() {
           </Col>
           {/* atividade */}
           <Col className={"col-12 col-md-6 mt-2 " + atividades.cursor}>
-            <Link href="/home" passHref>
+            <Link href="/atividade" passHref>
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image
@@ -74,7 +74,7 @@ export default function atividadeTipo() {
           </Col>
           {/* avaliação */}
           <Col className={"col-12 col-md-6 mt-2 " + atividades.cursor}>
-            <Link href="/home" passHref>
+            <Link href="/avaliacao" passHref>
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image
@@ -103,7 +103,7 @@ export default function atividadeTipo() {
 
           {/* historico */}
           <Col className={"col-12 col-md-6 mt-2 " + atividades.cursor}>
-            <Link href="/home" passHref>
+            <Link href="/historico" passHref>
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image

@@ -6,12 +6,15 @@ import TextInput from "../components/inputs/TextInput";
 import logo from "../public/logo.png";
 import AuthService from "../services/auth";
 import style from "../styles/Cadastro.module.scss";
+import { useRouter } from "next/router";
 
 export default function Cadastro() {
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const router = useRouter();
 
   const handleSubmit: React.FormEventHandler = async e => {
     e.preventDefault();
@@ -24,6 +27,10 @@ export default function Cadastro() {
     });
 
     console.log({ error, user });
+
+    if (!error && user) {
+      router.push("/home");
+    }
   };
 
   return (
