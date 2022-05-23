@@ -1,8 +1,8 @@
 import style from "../styles/Semester.module.scss";
 import Image from "next/image";
 import BlueButton from "./buttons/BlueButton";
-import Cadeira from "./Cadeira";
 import { Container, Accordion, Stack } from "react-bootstrap";
+import CadeiraWithActivites from "./CadeiraWithActivites";
 
 export default function Semester() {
   return (
@@ -23,8 +23,8 @@ export default function Semester() {
           <div className="d-flex justify-content-start  mb-2">
             <BlueButton Title="EXCLUIR"></BlueButton>
           </div>
-        <Cadeira></Cadeira>
-        <Cadeira></Cadeira>
+        <CadeiraWithActivites></CadeiraWithActivites>
+        <CadeiraWithActivites></CadeiraWithActivites>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
