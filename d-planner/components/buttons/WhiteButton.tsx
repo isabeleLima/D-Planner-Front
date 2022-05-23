@@ -1,10 +1,22 @@
 import style from "../../styles/Buttons.module.scss";
 
-export default function WhiteButton(props: any) {
+interface Props {
+  Title: string;
+  type?: "submit" | "reset" | "button";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children?: React.ReactNode;
+}
+
+export default function WhiteButton(props: Props) {
   return (
     <div className="mt-auto mb-5 d-flex justify-content-center">
-      {" "}
-      <a className={style.WhiteButton}>{props.Title}</a>
+      <button
+        type={props.type}
+        onClick={props.onClick}
+        className={style.WhiteButton}
+      >
+        {props.Title}
+      </button>
     </div>
   );
 }
