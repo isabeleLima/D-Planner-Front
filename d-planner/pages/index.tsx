@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Col, Container, Form, Row, Stack } from "react-bootstrap";
+import { Col, Container, Form, Row, Stack,Alert } from "react-bootstrap";
 import WhiteButton from "../components/buttons/WhiteButton";
 import TextInput from "../components/inputs/TextInput";
 import { useAuth } from "../contexts/AuthContext";
@@ -12,7 +12,7 @@ import style from "../styles/Login.module.scss";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [alert, setAlert] = useState(false);
   const router = useRouter();
 
   const { signIn } = useAuth();
@@ -26,12 +26,18 @@ export default function Login() {
 
     if (!error && user) {
       router.push("/home");
+    }else{
+      setAlert(true);
+      const timer = setTimeout(() => {
+        setAlert(false);
+      }, 3000);
+      return () => clearTimeout(timer);
     }
   };
 
   return (
     <Container fluid className={"justify-content " + style.Container}>
-      <Row className="h-100">
+      <Row className={"justify-content " + style.Container}>
         <Col className="col-7 d-none d-md-block">
           <Stack
             direction="vertical"
@@ -50,6 +56,9 @@ export default function Login() {
               paradis? Toma um mé que o mundo vai girarzis!Quem num gosta di mim
               que vai caçá
             </p>
+            <Alert variant='danger' show={alert}>
+            lOGIN OU SENHA INCORRETOS
+          </Alert>
           </Stack>
         </Col>
         <Col
@@ -93,6 +102,7 @@ export default function Login() {
             </div>
             <WhiteButton Title="LOGIN"> </WhiteButton>
           </Form>
+
           <div className="mt-auto d-flex justify-content-center">
             <p>
               Não tem uma conta?{" "}
