@@ -22,13 +22,14 @@ export default class AuthService {
 
     if (!error && _user) {
       const response = await supabase
-        .from<User>("users")
+        .from<Omit<User, "email">>("users")
         .insert([{ id: _user.id, fullname, username }])
         .eq("id", _user.id);
 
-      const [user] = response.body!;
+      const [__user] = response.body!;
+      const user = { ...__user, email };
 
-      return { user: { email, ...user } };
+      return { user };
     }
 
     return { error };
@@ -43,15 +44,29 @@ export default class AuthService {
 
     if (!error && _user) {
       const response = await supabase
-        .from<User>("users")
+        .from<Omit<User, "email">>("users")
         .select("*")
         .eq("id", _user.id);
 
-      const [user] = response.body!;
+      const [__user] = response.body!;
+      const user = { ...__user, email };
 
-      return { user: { email, ...user }, session };
+      this.saveUser(user);
+
+      return { user, session };
     }
 
     return { error };
+  }
+
+  static async saveUser(user: User): Promise<void> {
+    const json = JSON.stringify(user);
+    localStorage.setItem("user", json);
+  }
+
+  static async loadUser(): Promise<User | undefined> {
+    const json = localStorage.getItem("user");
+    if (json) return JSON.parse(json);
+    return undefined;
   }
 }

@@ -1,5 +1,5 @@
 import { ApiError } from "@supabase/supabase-js";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import AuthService, { SignInUser } from "../services/auth";
 import { User } from "../util/types";
 
@@ -19,6 +19,10 @@ interface Props {
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    AuthService.loadUser().then(setUser);
+  }, []);
 
   const signIn = async (_user: SignInUser) => {
     const { error, user } = await AuthService.signIn(_user);
