@@ -1,8 +1,25 @@
 import { Col, Container, Row, Stack, Form } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import CadeiraWithActivites from "../components/CadeiraWithActivites";
+import PurpleButton from "../components/buttons/PurpleButton";
 import style from "../styles/Calendar.module.scss";
+
+import SubjectService, { CreateSubject } from "../services/subject";
 export default function Cadeiras() {
+  const newSubject: CreateSubject = {
+    semester_id: 1,
+    name: "Calculo Numerico",
+    professor: "Paulo Cezar",
+    status: "ativo",
+  };
+  const [cadeira, setCadeira] = useState<any[] | null>([]);
+
+  useEffect(() => {
+    SubjectService.list().then(data => {
+      setCadeira(data);
+    });
+  }, []);
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -15,9 +32,21 @@ export default function Cadeiras() {
         </Row>
 
         <Row>
+          <PurpleButton
+            onClick={() => {
+              SubjectService.create(newSubject);
+            }}
+          Title='ADICIONAR CADEIRA'>
+            
+          </PurpleButton>
+
           <Col className={"col-12 rounded-bottom pt-4"}>
-           <CadeiraWithActivites></CadeiraWithActivites>
-           <CadeiraWithActivites></CadeiraWithActivites>
+            {cadeira?.map(cadeira => (
+              <CadeiraWithActivites
+                key={cadeira.id}
+                cadeira={cadeira}
+              ></CadeiraWithActivites>
+            ))}
           </Col>
         </Row>
       </Container>
