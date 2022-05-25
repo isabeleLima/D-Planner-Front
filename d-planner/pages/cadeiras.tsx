@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import CadeiraWithActivites from "../components/CadeiraWithActivites";
 import PurpleButton from "../components/buttons/PurpleButton";
 import style from "../styles/Calendar.module.scss";
+import CadeiraModal from "../components/modal/CadeiraModal";
 
 import SubjectService, { CreateSubject } from "../services/subject";
 export default function Cadeiras() {
@@ -14,6 +15,7 @@ export default function Cadeiras() {
     status: "ativo",
   };
   const [cadeira, setCadeira] = useState<any[] | null>([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     SubjectService.list().then(data => {
@@ -32,13 +34,7 @@ export default function Cadeiras() {
         </Row>
 
         <Row>
-          <PurpleButton
-            onClick={() => {
-              SubjectService.create(newSubject);
-            }}
-          Title='ADICIONAR CADEIRA'>
-            
-          </PurpleButton>
+          <CadeiraModal></CadeiraModal>
 
           <Col className={"col-12 rounded-bottom pt-4"}>
             {cadeira?.map(cadeira => (

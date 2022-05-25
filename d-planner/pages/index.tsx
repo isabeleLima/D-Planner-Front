@@ -57,7 +57,7 @@ export default function Login() {
               que vai caçá
             </p>
             <Alert variant='danger' show={alert}>
-            lOGIN OU SENHA INCORRETOS
+            LOGIN OU SENHA INCORRETOS
           </Alert>
           </Stack>
         </Col>
