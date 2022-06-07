@@ -18,7 +18,8 @@ export default function SemestreModal(){
     <>
         <BlueButton
             onClick={ handleShow }
-            Title='ADICIONAR SEMESTRE'>
+            Title='ADICIONAR SEMESTRE'
+            >
         </BlueButton>
 
       <Modal show={show} onHide={handleClose} centered>
@@ -38,9 +39,10 @@ export default function SemestreModal(){
         </Modal.Header>
         <Modal.Body>
             <Form>
-                    <Row>
-                        <div className="my-4">
-                            <BlueTextInput
+                <Container fluid="sm">
+                <Row className="my-4" sm="auto">
+                    <Col sm={12}>
+                        <BlueTextInput
                                 id="semestre"
                                 type="text"
                                 placeholder="SEMESTRE"
@@ -48,14 +50,14 @@ export default function SemestreModal(){
                                 onChange={e => setSemestre(e.target.value)}
                             >
                                 {" "}
-                            </BlueTextInput>
-                        </div>
-                    </Row>
-                    <Row className="mb-4 justify-content-between">
-                            <Col sm={3}>
+                        </BlueTextInput>
+                    </Col>        
+                </Row>
+                    <Row className="mb-4 justify-content-sm-start" sm="auto">
+                            <Col sm={4}>
                                 <label className={style.semesterColor}>DATA INICIAL</label>
                             </Col>
-                            <Col sm={8}>
+                            <Col sm={4}>
                                 <BlueTextInput
                                     id="dataInicio"
                                     type="date"
@@ -67,12 +69,12 @@ export default function SemestreModal(){
                                     
                                 </BlueTextInput>
                             </Col>
-                        </Row>
-                        <Row className="mb-4 justify-content-between">
-                            <Col sm={3}>
+                    </Row>
+                    <Row className="mb-4" sm="auto">
+                            <Col sm={4}>
                                 <label className={style.semesterColor}>DATA FIM</label>
                             </Col>
-                            <Col sm={8}>
+                            <Col sm={4}>
                                 <BlueTextInput
                                 id="dataFim"
                                 type="date"
@@ -83,7 +85,8 @@ export default function SemestreModal(){
                                 {" "}
                                 </BlueTextInput>
                             </Col>
-                        </Row>
+                    </Row>
+                </Container>
             </Form> 
         </Modal.Body>
         <Modal.Footer>

@@ -15,3 +15,27 @@
 .cursor{
 	cursor: pointer;
 }
+
+.logoApresentacao{
+    width: 60px;
+    height: 60px;
+    background: $greenColor url("../public/trabalho.png") no-repeat center;
+    background-size: 30px;
+    border-radius: 50%;
+}
+
+.logoAtividade{
+    width: 60px;
+    height: 60px;
+    background: $orangeColor url("../public/atividade.png") no-repeat center;
+    background-size: 30px;
+    border-radius: 50%;
+}
+
+.logoAvaliacao{
+    width: 60px;
+    height: 60px;
+    background: $redColor url("../public/avaliacao.png") no-repeat center;
+    background-size: 30px;
+    border-radius: 50%;
+}

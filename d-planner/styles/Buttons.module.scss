@@ -12,6 +12,7 @@
     width: 80%;
     font-weight: 500;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 .WhiteButton:hover{
     color: $greenColor;
@@ -26,10 +27,12 @@
     border-radius: 6px;
     border: none;
     padding: 5px;
-    width: 100%;
+    margin: 2% 2% 0 2%;
+    width: 96%;
     color: #fff;
     background: $redColor;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .redButton:hover{
@@ -44,11 +47,13 @@
     font-size: 18px;
     border-radius: 6px;
     border: none;
+    margin: 2% 2% 0 2%;
     padding: 5px;
-    width: 100%;
+    width: 96%;
     color: #fff;
     background: $greenColor;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .greenButton:hover{
@@ -63,10 +68,12 @@
     border-radius: 6px;
     border: none;
     padding: 5px;
-    width: 100%;
+    margin: 2% 2% 0 2%;
+    width: 96%;
     color: #fff;
     background: $orangeColor;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .orangeButton:hover{
@@ -80,11 +87,13 @@
     font-size: 18px;
     border-radius: 6px;
     border: none;
+    margin: 2% 2% 0 2%;
     padding: 5px;
-    width: 100%;
+    width: 96%;
     color: #fff;
     background: $blueColor;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .blueButton:hover{
@@ -99,10 +108,12 @@
     border-radius: 6px;
     border: none;
     padding: 5px;
-    width: 100%;
+    margin: 2% 2% 0 2%;
+    width: 96%;
     color: #fff;
     background: $purpleColor;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .purpleButton:hover{

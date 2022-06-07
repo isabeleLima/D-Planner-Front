@@ -65,3 +65,71 @@
     font-size: 15px;
 }
 
+.greenTextInput {
+    border: none;
+    border-bottom: 1px solid $greenColor;
+    font-weight: 400;
+    font-size: 13px;
+    background: transparent;
+    color: $greenColor;
+    width: 90%;
+    padding-left: 5px;
+    transition-duration: 0.3s;
+
+}
+
+.greenTextInput::placeholder{
+    color: $greenColor;
+}
+
+.greenTextInput:focus {
+    outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.orangeTextInput {
+    border: none;
+    border-bottom: 1px solid $orangeColor;
+    font-weight: 400;
+    font-size: 13px;
+    background: transparent;
+    color: $orangeColor;
+    width: 90%;
+    padding-left: 5px;
+    transition-duration: 0.3s;
+
+}
+
+.orangeTextInput::placeholder{
+    color: $orangeColor;
+}
+
+.orangeTextInput:focus {
+    outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.redTextInput {
+    border: none;
+    border-bottom: 1px solid $redColor;
+    font-weight: 400;
+    font-size: 13px;
+    background: transparent;
+    color: $redColor;
+    width: 90%;
+    padding-left: 5px;
+    transition-duration: 0.3s;
+
+}
+
+.redTextInput::placeholder{
+    color: $redColor;
+}
+
+.redTextInput:focus {
+    outline: none !important;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
