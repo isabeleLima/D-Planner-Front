@@ -6,6 +6,8 @@ import PurpleButton from "../components/buttons/PurpleButton";
 import style from "../styles/Calendar.module.scss";
 import CadeiraModal from "../components/modal/CadeiraModal";
 
+import { api } from "./service/axios";
+
 import SubjectService, { CreateSubject } from "../services/subject";
 export default function Cadeiras() {
   const newSubject: CreateSubject = {
@@ -14,14 +16,29 @@ export default function Cadeiras() {
     professor: "Paulo Cezar",
     status: "ativo",
   };
-  const [cadeira, setCadeira] = useState<any[] | null>([]);
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [cadeiras, setCadeiras] = useState<any[] | null>([])
+
   useEffect(() => {
-    SubjectService.list().then(data => {
-      setCadeira(data);
-    });
-  }, []);
+    const token = localStorage.getItem("token");
+
+    const email = localStorage.getItem("email-user");
+
+    api.post("/user/findUser",
+      { email }).then(result => {
+        api.get(`/subject/findUserId/${result.data.id}`, {
+          headers: {
+            'Authorization': `${token}`
+          }
+        }).then(result => {
+          setCadeiras(result?.data)
+
+          console.log(result.data)
+        })
+      })
+
+  }, [])
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -37,7 +54,7 @@ export default function Cadeiras() {
           <CadeiraModal></CadeiraModal>
 
           <Col className={"col-12 rounded-bottom pt-4"}>
-            {cadeira?.map(cadeira => (
+            {cadeiras?.map(cadeira => (
               <CadeiraWithActivites
                 key={cadeira.id}
                 cadeira={cadeira}

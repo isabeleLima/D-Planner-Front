@@ -25,14 +25,6 @@ export default function Semesters() {
       }).then(result => {
         setSem(result.data)
         console.log(result.data)
-
-        api.get(`/subject/${result.data.id}`, {
-          headers: {
-            'Authorization': `${token}`
-          }
-        }).then(result => {
-          setCadeira(result?.data)
-        })
       });
     })
   }, []);
@@ -56,7 +48,6 @@ export default function Semesters() {
             {sem?.map(semester => (
               <Semester key={semester.id}
                 semester={semester}
-                cadeira={cadeira}
               ></Semester>
             ))}
           </Col>
