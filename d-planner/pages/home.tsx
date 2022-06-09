@@ -8,24 +8,27 @@ import style from "../styles/Calendar.module.scss";
 import { api } from "./service/axios";
 import { useEffect, useState } from "react";
 export default function Home() {
-  const[atividades,setAtividades] = useState<AxiosResponse | null>(null);
-  const[user,setUser] = useState<AxiosResponse | null>(null);
+  const [atividades, setAtividades] = useState<[]>();
+  const [user, setUser] = useState<AxiosResponse | null>(null);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     const email = localStorage.getItem("email-user");
-
     api.post("/user/findUser",
-    {email},
-    {headers:{
-      'Authorization': `${token}`
-    }}).then(result => setUser(result));
+      { email }).then(result => {
 
-   
-    api.get(`activity/listByUser/${user?.data.id}`,{headers:{
-      'Authorization': `${token}`
-    }}).then(result => setAtividades(result));
+        setUser(result)
 
-  }, [user?.data.id]);
+        api.get(`/activity/listByUser/${result?.data.id}`, {
+          headers: {
+            'Authorization': `${token}`
+          }
+        }).then(result => {
+          setAtividades(result.data)
+          console.log(result.data)
+        });
+      });
+  }, []);
 
 
   return (
@@ -41,9 +44,22 @@ export default function Home() {
 
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            <RedTask></RedTask>
-            <OrangeTask></OrangeTask>
-            <GreenTask></GreenTask>
+
+            {atividades?.map((atividade, index) => {
+              if (atividade?.type == 1) {
+                return (
+                  <OrangeTask key={index}></OrangeTask>
+                )
+              } else if (atividade.type == 2) {
+                return (
+                  <RedTask key={index}></RedTask>
+                )
+              } else {
+                <GreenTask key={index}></GreenTask>
+              }
+            })}
+
+
           </Col>
         </Row>
       </Container>

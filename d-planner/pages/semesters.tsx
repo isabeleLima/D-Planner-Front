@@ -8,26 +8,34 @@ import SubjectService, { CreateSubject } from "../services/subject";
 import { Semester as Sem } from "../util/types";
 import SemestreModal from "../components/modal/SemestreModal";
 
+import { api } from "./service/axios";
 export default function Semesters() {
 
-  const [ sem, setSem] = useState<any[]| null>([])
+  const [sem, setSem] = useState<any[] | null>([])
   const [cadeira, setCadeira] = useState<any[] | null>([]);
 
-  useEffect(()=> {
-    SemesterService.list().then((data) =>{
-      setSem(data)
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const email = localStorage.getItem("email-user");
+    api.post("/user/findUser", { email }).then(result => {
+      api.get(`/semesters/${result?.data.id}`, {
+        headers: {
+          'Authorization': `${token}`
+        }
+      }).then(result => {
+        setSem(result.data)
+        console.log(result.data)
+
+        api.get(`/subject/${result.data.id}`, {
+          headers: {
+            'Authorization': `${token}`
+          }
+        }).then(result => {
+          setCadeira(result?.data)
+        })
+      });
     })
-
-    SubjectService.list().then(data => {
-      setCadeira(data);
-    });
-  }, [])
-  const newSemestre: CreateSemester= {
-    start: new Date("2023-05-05"),
-    end: new Date("2023-07-05"),
-    name: '5 Período'
-  }
-
+  }, []);
 
 
   return (
@@ -45,10 +53,10 @@ export default function Semesters() {
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            {sem?.map(semester =>(
+            {sem?.map(semester => (
               <Semester key={semester.id}
-                semester ={semester}
-                cadeira = {cadeira}
+                semester={semester}
+                cadeira={cadeira}
               ></Semester>
             ))}
           </Col>

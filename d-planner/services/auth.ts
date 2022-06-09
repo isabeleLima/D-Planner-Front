@@ -2,9 +2,10 @@ import { User } from "../util/types";
 import { supabase } from "./api";
 
 export interface SignUpUser {
+  id: number,
   email: string;
   senha: string;
-  fullname: string;
+  nome: string;
   username: string;
 }
 

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Col, Container, Form, Row, Stack,Alert } from "react-bootstrap";
+import { Col, Container, Form, Row, Stack, Alert } from "react-bootstrap";
 import WhiteButton from "../components/buttons/WhiteButton";
 import TextInput from "../components/inputs/TextInput";
 import { useAuth } from "../contexts/AuthContext";
@@ -20,7 +20,7 @@ export default function Login() {
   const handleSubmit: React.FormEventHandler = async e => {
     e.preventDefault();
 
-    await signIn( email, senha );
+    signIn(email, senha);
   };
 
   return (
@@ -45,8 +45,8 @@ export default function Login() {
               que vai caçá
             </p>
             <Alert variant='danger' show={alert}>
-            LOGIN OU SENHA INCORRETOS
-          </Alert>
+              LOGIN OU SENHA INCORRETOS
+            </Alert>
           </Stack>
         </Col>
         <Col

@@ -1,11 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import{ SignInUser } from "../services/auth";
+import { createContext, useContext, useState } from "react";
 import { User } from "../util/types";
+import { SignInUser } from "../services/auth";
 import Router from "next/router";
-import {api} from "../pages/service/axios";
+import { api } from "../pages/service/axios";
 
 interface Context {
-  signIn: (email:string,senha:string) => {};
+  signIn: (email: string, senha: string) => {};
 }
 
 const authContext = createContext({} as Context);
@@ -15,20 +15,25 @@ interface Props {
 }
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
-  const signIn = async (email:string,senha:string) => {
-   
-    await api.post("/login", {
-     email,senha
-    }).then((response) =>{
-      console.log(response.headers.authorization)
-      localStorage.setItem('token',response.headers.authorization);
-      localStorage.setItem('email-user',email);
-    })
-    Router.push("./home");
+  const signIn = async (email: string, senha: string) => {
+
+    try {
+      await api.post("/login", {
+        email, senha
+      }).then((response) => {
+        console.log(response.headers.authorization)
+        localStorage.setItem('token', response.headers.authorization);
+        localStorage.setItem('email-user', email);
+      })
+
+      Router.push("./home");
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
-    <authContext.Provider value={{signIn }}>
+    <authContext.Provider value={{ signIn }}>
       {children}
     </authContext.Provider>
   );
