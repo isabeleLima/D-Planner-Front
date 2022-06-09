@@ -11,7 +11,7 @@ import style from "../styles/Login.module.scss";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [senha, setSenha] = useState("");
   const [alert, setAlert] = useState(false);
   const router = useRouter();
 
@@ -20,19 +20,7 @@ export default function Login() {
   const handleSubmit: React.FormEventHandler = async e => {
     e.preventDefault();
 
-    const { user, error } = await signIn({ email, password });
-
-    console.log({ user, error });
-
-    if (!error && user) {
-      router.push("/home");
-    }else{
-      setAlert(true);
-      const timer = setTimeout(() => {
-        setAlert(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
+    await signIn( email, senha );
   };
 
   return (
@@ -94,8 +82,8 @@ export default function Login() {
                 id="senha"
                 type="password"
                 placeholder="PASSWORD"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+                value={senha}
+                onChange={e => setSenha(e.target.value)}
               >
                 {" "}
               </TextInput>

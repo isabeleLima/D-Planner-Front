@@ -1,14 +1,11 @@
-import { ApiError } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState } from "react";
-import AuthService, { SignInUser } from "../services/auth";
+import{ SignInUser } from "../services/auth";
 import { User } from "../util/types";
+import Router from "next/router";
+import {api} from "../pages/service/axios";
 
 interface Context {
-  user?: User;
-  signIn: (user: SignInUser) => Promise<{
-    error?: ApiError | null;
-    user?: User;
-  }>;
+  signIn: (email:string,senha:string) => {};
 }
 
 const authContext = createContext({} as Context);
@@ -18,22 +15,20 @@ interface Props {
 }
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<User>();
-
-  useEffect(() => {
-    AuthService.loadUser().then(setUser);
-  }, []);
-
-  const signIn = async (_user: SignInUser) => {
-    const { error, user } = await AuthService.signIn(_user);
-    if (!error && user) {
-      setUser(user);
-    }
-    return { error, user };
+  const signIn = async (email:string,senha:string) => {
+   
+    await api.post("/login", {
+     email,senha
+    }).then((response) =>{
+      console.log(response.headers.authorization)
+      localStorage.setItem('token',response.headers.authorization);
+      localStorage.setItem('email-user',email);
+    })
+    Router.push("./home");
   };
 
   return (
-    <authContext.Provider value={{ user, signIn }}>
+    <authContext.Provider value={{signIn }}>
       {children}
     </authContext.Provider>
   );
