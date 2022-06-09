@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import style from "../../styles/tasks/OrangeTask.module.scss";
 import OrangeButton from "../buttons/OrangeButton";
 import { Container, Row, Col, Stack, Modal,Accordion  } from "react-bootstrap";
-
-export default function OrangeTask() {
+import dataFormater from "../../pages/service/data";
+export default function OrangeTask(props) {
+  const activity = props.activity;
+  const days = dataFormater(activity.dataDeEntrega)
   return (
     <>
       <Accordion defaultActiveKey="0" className="mb-2">
@@ -11,17 +13,15 @@ export default function OrangeTask() {
           <Accordion.Header>
             <Stack direction="horizontal" gap={4} className={style.Color}>
               <div className={style.logoTask}></div>
-              <h4>1 dia</h4>
-              <h6>3° AVALIAÇÃO</h6>
-              <h6 className="d-none d-sm-block">PROGRAMAÇÃO WEB</h6>
+              <h4>{days}</h4>
+              <h6>{activity.nome}</h6>
+              <h6 className="d-none d-sm-block">{activity.subject.nome}</h6>
             </Stack>
           </Accordion.Header>
           <Accordion.Body>
-          <h5 className="d-block d-sm-none">PROGRAMAÇÃO WEB</h5>
+          <h5 className="d-block d-sm-none">{activity.subject.nome}</h5>
             <p className="text-break ms-auto">
-              Mussum Ipsum, cacilds vidis litro abertis. Detraxit consequat et
-              quo num tendi nada. Cevadis im ampola pa arma uma pindureta.Leite
-              de capivaris, leite de mula
+            {activity.descricao}
             </p>
             <div className="d-flex justify-content-start  mb-2">
               <OrangeButton Title="CONCLUIR"></OrangeButton>

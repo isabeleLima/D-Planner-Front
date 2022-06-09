@@ -48,14 +48,16 @@ export default function Home() {
             {atividades?.map((atividade, index) => {
               if (atividade?.type == 1) {
                 return (
-                  <OrangeTask key={index}></OrangeTask>
+                  <OrangeTask key={index} activity={atividade}></OrangeTask>
                 )
               } else if (atividade.type == 2) {
                 return (
-                  <RedTask key={index}></RedTask>
+                  <RedTask key={index} activity={atividade}></RedTask>
                 )
-              } else {
-                <GreenTask key={index}></GreenTask>
+              } else if (atividade.type == 3) {
+                return(
+                  <GreenTask key={index} activity={atividade}></GreenTask>
+                ) 
               }
             })}
 
