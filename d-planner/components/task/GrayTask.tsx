@@ -4,8 +4,8 @@ import { Container, Row, Col, Stack, Modal,Accordion } from "react-bootstrap";
 
 
 
-export default function GrayTask() {
- 
+export default function GrayTask(props) {
+  const activity = props.activity;
   return (
     <>
        <Accordion defaultActiveKey="0" className="mb-2">
@@ -14,16 +14,14 @@ export default function GrayTask() {
             <Stack direction="horizontal" gap={4} className={style.Color}>
               <div className={style.logoTask}></div>
               <h4>perdido</h4>
-              <h6>3° AVALIAÇÃO</h6>
-              <h6 className="d-none d-sm-block">PROGRAMAÇÃO WEB</h6>
+              <h6>{activity.nome}</h6>
+              <h6 className="d-none d-sm-block">{activity.subject.nome}</h6>
             </Stack>
           </Accordion.Header>
           <Accordion.Body>
-          <h5 className="d-block d-sm-none">PROGRAMAÇÃO WEB</h5>
+          <h5 className="d-block d-sm-none">{activity.subject.nome}</h5>
             <p className="text-break ms-auto">
-              Mussum Ipsum, cacilds vidis litro abertis. Detraxit consequat et
-              quo num tendi nada. Cevadis im ampola pa arma uma pindureta.Leite
-              de capivaris, leite de mula
+              {activity.descricao}
             </p>
           </Accordion.Body>
         </Accordion.Item>
