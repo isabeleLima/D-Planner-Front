@@ -3,11 +3,10 @@ import { Col, Container, Row, Stack, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 import Semester from "../components/Semester";
 import style from "../styles/Calendar.module.scss";
-
 import SemesterService, { CreateSemester } from "../services/semester";
 import SubjectService, { CreateSubject } from "../services/subject";
-
 import { Semester as Sem } from "../util/types";
+import SemestreModal from "../components/modal/SemestreModal";
 
 export default function Semesters() {
 
@@ -42,9 +41,7 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <Button onClick={() => {
-            SemesterService.create(newSemestre)
-          }}>Novo semestre</Button>
+          <SemestreModal></SemestreModal>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
