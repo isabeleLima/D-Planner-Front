@@ -5,7 +5,32 @@ import OrangeTask from "../components/task/OrangeTask";
 import GreenTask from "../components/task/GreenTask";
 import GrayTask from "../components/task/GrayTask";
 import style from "../styles/Calendar.module.scss";
+import { api } from "./service/axios";
+import { useState, useEffect } from "react";
+import axios, { AxiosResponse } from "axios";
+
 export default function Historico() {
+  const [atividades, setAtividades] = useState<[]>();
+  const [user, setUser] = useState<AxiosResponse | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const email = localStorage.getItem("email-user");
+    api.post("/user/findUser", { email }).then(result => {
+      setUser(result);
+
+      api
+        .get(`/activity/listAllByUser/${result?.data.id}`, {
+          headers: {
+            Authorization: `${token}`,
+          },
+        })
+        .then(result => {
+          setAtividades(result.data);
+          console.log(result.data);
+        });
+    });
+  }, []);
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -19,11 +44,19 @@ export default function Historico() {
 
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            <RedTask></RedTask>
-            <GrayTask></GrayTask>
-            <OrangeTask></OrangeTask>
-            <GreenTask></GreenTask>
-            <GrayTask></GrayTask>
+            {atividades?.map((atividade, index) => {
+              if (atividade?.status == "PERDIDO") {
+                return <GrayTask key={index} activity={atividade}></GrayTask>;
+              } else if (atividade?.type == 1) {
+                return (
+                  <OrangeTask key={index} activity={atividade}></OrangeTask>
+                );
+              } else if (atividade.type == 2) {
+                return <RedTask key={index} activity={atividade}></RedTask>;
+              } else if (atividade.type == 3) {
+                return <GreenTask key={index} activity={atividade}></GreenTask>;
+              }
+            })}
           </Col>
         </Row>
       </Container>

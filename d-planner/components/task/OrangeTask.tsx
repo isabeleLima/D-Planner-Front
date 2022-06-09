@@ -6,6 +6,15 @@ import dataFormater from "../../pages/service/data";
 export default function OrangeTask(props) {
   const activity = props.activity;
   const days = dataFormater(activity.dataDeEntrega)
+
+  const [display, setDisplay] = useState<[]| String>();
+
+  
+  useEffect(() => {
+    if(activity.status !="ABERTO"){
+      setDisplay("d-none")
+    }
+  }, []);
   return (
     <>
       <Accordion defaultActiveKey="0" className="mb-2">
@@ -23,7 +32,7 @@ export default function OrangeTask(props) {
             <p className="text-break ms-auto">
             {activity.descricao}
             </p>
-            <div className="d-flex justify-content-start  mb-2">
+            <div  className={` ${display} d-flex justify-content-start  mb-2`}>
               <OrangeButton Title="CONCLUIR"></OrangeButton>
             </div>
           </Accordion.Body>

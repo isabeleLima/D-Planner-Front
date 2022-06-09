@@ -5,8 +5,17 @@ import { Container, Row, Col, Stack, Modal,Accordion } from "react-bootstrap";
 import dataFormater from "../../pages/service/data";
 
 export default function GreenTask(props:any) {
-  const activity = props.activity;
+  const activity = props.activity;  
   const days = dataFormater(activity.dataDeEntrega)
+  const [display, setDisplay] = useState<[]| String>();
+
+  
+  useEffect(() => {
+    if(activity.status !="ABERTO"){
+      setDisplay("d-none")
+    }
+  }, []);
+
   return (
     <>
        <Accordion defaultActiveKey="0" className="mb-2">
@@ -24,8 +33,8 @@ export default function GreenTask(props:any) {
             <p className="text-break ms-auto">
             {activity.descricao}
             </p>
-            <div className="d-flex justify-content-start  mb-2">
-              <GreenButton Title="CONCLUIR"></GreenButton>
+            <div className={` ${display} d-flex justify-content-start  mb-2`}>
+              <GreenButton Title="CONCLUIR" ></GreenButton>
             </div>
           </Accordion.Body>
         </Accordion.Item>

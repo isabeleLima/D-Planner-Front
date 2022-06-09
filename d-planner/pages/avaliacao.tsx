@@ -3,8 +3,33 @@ import Header from "../components/Header";
 import RedTask from "../components/task/RedTask";
 import style from "../styles/Calendar.module.scss";
 import AvaliacaoModal from "../components/modal/AvaliacaoModal";
+import { api } from "./service/axios";
+import { useState, useEffect } from "react";
+import axios, { AxiosResponse } from "axios";
+
 
 export default function Semesters() {
+  const [atividades, setAtividades] = useState<[]>();
+  const [user, setUser] = useState<AxiosResponse | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const email = localStorage.getItem("email-user");
+    api.post("/user/findUser", { email }).then(result => {
+      setUser(result);
+
+      api
+        .get(`/activity/listByUserType/${result?.data.id}/2`, {
+          headers: {
+            Authorization: `${token}`,
+          },
+        })
+        .then(result => {
+          setAtividades(result.data);
+          console.log(result.data);
+        });
+    });
+  }, []);
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -20,9 +45,9 @@ export default function Semesters() {
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-          <RedTask></RedTask>
-          <RedTask></RedTask>
-          <RedTask></RedTask>
+          {atividades?.map((atividade, index) => {
+              return <RedTask key={index} activity={atividade}></RedTask>;
+            })}
           </Col>
         </Row>
       </Container>

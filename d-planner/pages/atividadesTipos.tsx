@@ -62,7 +62,7 @@ export default function atividadeTipo() {
                     gap={2}
                     className={" ms-3 " + atividades.atividade}
                   >
-                    <h3>APRESENTAÇÃO</h3>
+                    <h3>ATIVIDADE</h3>
                     <p>
                       num tendi nada.Cevadis im ampola pa arma uma
                       pindureta.Leite de capivaris,
@@ -90,7 +90,7 @@ export default function atividadeTipo() {
                     gap={2}
                     className={" ms-3 " + atividades.avaliacao}
                   >
-                    <h3>APRESENTAÇÃO</h3>
+                    <h3>AVALIAÇÃO</h3>
                     <p>
                       num tendi nada.Cevadis im ampola pa arma uma
                       pindureta.Leite de capivaris,
@@ -119,7 +119,7 @@ export default function atividadeTipo() {
                     gap={2}
                     className={" ms-3 " + atividades.historico}
                   >
-                    <h3>APRESENTAÇÃO</h3>
+                    <h3>HISTÓRICO</h3>
                     <p>
                       num tendi nada.Cevadis im ampola pa arma uma
                       pindureta.Leite de capivaris,

@@ -1,11 +1,26 @@
 import { useState, useEffect } from "react";
+import axios, { AxiosResponse } from "axios";
 import style from "../../styles/tasks/RedTask.module.scss";
 import RedButton from "../../components/buttons/RedButton";
 import { Container, Row, Col, Stack, Accordion } from "react-bootstrap";
 import dataFormater from "../../pages/service/data";
+import { api } from "../../pages/service/axios";
 export default function RedTask(props) {
   const activity = props.activity;
   const days = dataFormater(activity.dataDeEntrega)
+
+  const [atividades, setAtividades] = useState<[]>();
+  const [user, setUser] = useState<AxiosResponse | null>(null);
+  const token = localStorage.getItem("token");
+
+  const [display, setDisplay] = useState<[]| String>();
+
+  useEffect(() => {
+    if(activity.status !="ABERTO"){
+      setDisplay("d-none")
+    }
+  }, []);
+
   return (
     <>
       <Accordion defaultActiveKey="0" className="mb-2" >
@@ -23,8 +38,18 @@ export default function RedTask(props) {
           <p className="text-break ms-auto">
             {activity.descricao}
             </p>
-            <div className="d-flex justify-content-start  mb-2">
-              <RedButton Title="CONCLUIR"></RedButton>
+            <div  className={` ${display} d-flex justify-content-start  mb-2`}>
+
+              <RedButton onClick={() => {
+                if(activity){
+                  console.log(activity);
+                  api.put(`/activity/close`,{activity}, {
+                    headers: {
+                      'Authorization': `${token}`
+                    }
+                  })
+                }
+            }} Title="CONCLUIR"></RedButton>
             </div>
           </Accordion.Body>
         </Accordion.Item>
