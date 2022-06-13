@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
-import BlueButton from "../buttons/BlueButton";
+import BlueButton from "../../buttons/BlueButton";
 import style from "../../styles/Semester.module.scss";
-import BlueTextInput from "../inputs/BlueTextInput";
+import BlueTextInput from "../../inputs/BlueTextInput";
 
-export default function SemestreModal(){
+export default function SemestreModalCad(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

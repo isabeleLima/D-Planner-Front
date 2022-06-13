@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
-import PurpleButton from "../buttons/PurpleButton";
+import PurpleButton from "../../buttons/PurpleButton";
 import style from "../../styles/Cadeira.module.scss";
-import PurpleTextInput from "../inputs/PurpleTextInput";
+import PurpleTextInput from "../../inputs/PurpleTextInput";
 
-export default function CadeiraModal(){
+export default function CadeiraModalCad(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

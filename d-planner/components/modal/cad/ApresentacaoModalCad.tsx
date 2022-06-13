@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
-import GreenButton from "../buttons/GreenButton";
+import GreenButton from "../../buttons/GreenButton";
 import style from "../../styles/AtividadeTipos.module.scss";
-import GreenTextInput from "../inputs/GreenTextInput";
+import GreenTextInput from "../../inputs/GreenTextInput";
 
-export default function ApresentacaoModal(){
+export default function ApresentacaoModalCad(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

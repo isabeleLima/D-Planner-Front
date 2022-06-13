@@ -1,26 +1,26 @@
 import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
-import RedButton from "../buttons/RedButton";
+import OrangeButton from "../../buttons/OrangeButton";
 import style from "../../styles/AtividadeTipos.module.scss";
-import RedTextInput from "../inputs/RedTextInput";
+import OrangeTextInput from "../../inputs/OrangeTextInput";
 
-export default function AvaliacaoModal(){
+export default function AtividadeModalAtt(){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [avaliacao, setAvaliacao] = useState("");
+    const [atividade, setAtividade] = useState("");
     const [cadeira, setCadeira] = useState("");
     const [descricao, setDescricao] = useState("");
     const [entrega, setEntrega] = useState("");
 
   return (
     <>
-        <RedButton
+        <OrangeButton
             onClick={ handleShow }
-            Title='ADICIONAR AVALIAÇÃO'>
-        </RedButton>
+            Title='EDITAR'>
+        </OrangeButton>
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
@@ -28,10 +28,10 @@ export default function AvaliacaoModal(){
             <Container>
                 <Row>
                     <Col>
-                        <div className={style.logoAvaliacao}></div>
+                        <div className={style.logoAtividade}></div>
                     </Col>
                     <Col sm="auto" className="mt-3 auto">
-                        <h4 className={style.avaliacao}>NOVA AVALIAÇÃO</h4>
+                        <h4 className={style.atividade}>ATUALIZAR ATIVIDADE</h4>
                     </Col>
                 </Row>
             </Container>
@@ -42,21 +42,21 @@ export default function AvaliacaoModal(){
                 <Container fluid="sm">
                     <Row className="my-4" sm="auto">
                         <Col sm={12}>
-                            <RedTextInput
+                            <OrangeTextInput
                                     id="atividade"
                                     type="text"
-                                    placeholder="TÍTULO DA AVALIAÇÃO"
-                                    value={avaliacao}
-                                    onChange={e => setAvaliacao(e.target.value)}
+                                    placeholder="TÍTULO DA ATIVIDADE"
+                                    value={atividade}
+                                    onChange={e => setAtividade(e.target.value)}
                                 >
                                     {" "}
-                            </RedTextInput>
+                            </OrangeTextInput>
                         </Col>        
                     </Row>
   
                     <Row className="my-4" sm="auto">
                         <Col sm={12}>
-                            <RedTextInput
+                            <OrangeTextInput
                                     id="cadeira"
                                     type="text"
                                     placeholder="NOME DA CADEIRA"
@@ -64,13 +64,13 @@ export default function AvaliacaoModal(){
                                     onChange={e => setCadeira(e.target.value)}
                                 >
                                     {" "}
-                            </RedTextInput>
+                            </OrangeTextInput>
                         </Col>        
                     </Row>
   
                     <Row className="my-4" sm="auto">
                         <Col sm={12}>
-                            <RedTextInput
+                            <OrangeTextInput
                                     id="descricao"
                                     type="text"
                                     placeholder="DESCRIÇÃO"
@@ -78,16 +78,16 @@ export default function AvaliacaoModal(){
                                     onChange={e => setDescricao(e.target.value)}
                                 >
                                     {" "}
-                            </RedTextInput>
+                            </OrangeTextInput>
                         </Col>        
                     </Row>
 
                     <Row className="mb-4 justify-content-sm-start" sm="auto">
                             <Col sm="auto">
-                                <label className={style.avaliacao}>PRAZO DE ENTREGA</label>
+                                <label className={style.atividade}>PRAZO DE ENTREGA</label>
                             </Col>
                             <Col sm={7}>
-                                <RedTextInput
+                                <OrangeTextInput
                                     id="entrega"
                                     type="date"
                                     placeholder=""
@@ -96,7 +96,7 @@ export default function AvaliacaoModal(){
                                 >
                                     {" "}
                                     
-                                </RedTextInput>
+                                </OrangeTextInput>
                             </Col>
                     </Row>
                     
@@ -104,10 +104,10 @@ export default function AvaliacaoModal(){
             </Form> 
         </Modal.Body>
         <Modal.Footer>
-            <RedButton
+            <OrangeButton
                 onClick={ handleClose }
-                Title='CADASTRAR'>
-            </RedButton> 
+                Title='ATUALIZAR'>
+            </OrangeButton> 
         </Modal.Footer>
       </Modal>
     </>
