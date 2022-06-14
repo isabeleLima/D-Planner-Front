@@ -7,7 +7,7 @@ import SemesterService, { CreateSemester } from "../services/semester";
 import SubjectService, { CreateSubject } from "../services/subject";
 import { Semester as Sem } from "../util/types";
 import SemestreModalCad from "../components/modal/cad/SemestreModalCad";
-import SemestreModalAtt from "../components/modal/att/SemestreModalAtt";
+
 
 import { api } from "./service/axios";
 export default function Semesters() {
