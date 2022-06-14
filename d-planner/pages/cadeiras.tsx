@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import CadeiraWithActivites from "../components/CadeiraWithActivites";
 import PurpleButton from "../components/buttons/PurpleButton";
 import style from "../styles/Calendar.module.scss";
-import CadeiraModal from "../components/modal/CadeiraModal";
+import CadeiraModalCad from "../components/modal/cad/CadeiraModalCad";
 
 import { api } from "./service/axios";
 
@@ -51,7 +51,7 @@ export default function Cadeiras() {
         </Row>
 
         <Row>
-          <CadeiraModal></CadeiraModal>
+          <CadeiraModalCad></CadeiraModalCad>
 
           <Col className={"col-12 rounded-bottom pt-4"}>
             {cadeiras?.map(cadeira => (

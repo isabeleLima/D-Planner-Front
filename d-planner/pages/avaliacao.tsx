@@ -2,7 +2,7 @@ import { Col, Container, Row, Stack, Form } from "react-bootstrap";
 import Header from "../components/Header";
 import RedTask from "../components/task/RedTask";
 import style from "../styles/Calendar.module.scss";
-import AvaliacaoModal from "../components/modal/AvaliacaoModal";
+import AvaliacaoModalCad from "../components/modal/cad/AvaliacaoModalCad";
 import { api } from "./service/axios";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
@@ -41,7 +41,7 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <AvaliacaoModal></AvaliacaoModal>
+          <AvaliacaoModalCad></AvaliacaoModalCad>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>

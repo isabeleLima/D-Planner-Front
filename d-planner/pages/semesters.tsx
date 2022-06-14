@@ -6,7 +6,8 @@ import style from "../styles/Calendar.module.scss";
 import SemesterService, { CreateSemester } from "../services/semester";
 import SubjectService, { CreateSubject } from "../services/subject";
 import { Semester as Sem } from "../util/types";
-import SemestreModal from "../components/modal/SemestreModal";
+import SemestreModalCad from "../components/modal/cad/SemestreModalCad";
+import SemestreModalAtt from "../components/modal/att/SemestreModalAtt";
 
 import { api } from "./service/axios";
 export default function Semesters() {
@@ -41,7 +42,7 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <SemestreModal></SemestreModal>
+          <SemestreModalCad></SemestreModalCad>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>

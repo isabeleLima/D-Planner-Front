@@ -54,7 +54,7 @@ export default function CadeiraModalAtt(){
                         <PurpleTextInput
                             id="professor"
                             type="text"
-                            placeholder="STATUS"
+                            placeholder="PROFESSOR"
                             value={professor}
                             onChange={e => setProfessor(e.target.value)}
                         >

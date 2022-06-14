@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 
 import { api } from "../pages/service/axios";
 import SubjectService, { CreateSubject } from "../services/subject";
+import CadeiraModalAtt from "./modal/att/CadeiraModalAtt";
 
 export default function CadeiraWithActivites(props: any) {
 
@@ -38,7 +39,7 @@ export default function CadeiraWithActivites(props: any) {
         </Accordion.Header>
         <Accordion.Body className={style.cadeiraColor}>
           <div className="d-flex justify-content-start  mb-2">
-            <PurpleButton Title="EDITAR"></PurpleButton>
+            <CadeiraModalAtt></CadeiraModalAtt>
           </div>
           <div className="d-flex justify-content-start  mb-2">
             <PurpleButton onClick={() => {

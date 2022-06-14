@@ -5,6 +5,7 @@ import BlueButton from "./buttons/BlueButton";
 import { Container, Accordion, Stack } from "react-bootstrap";
 import CadeiraWithActivites from "./CadeiraWithActivites";
 import { api } from "../pages/service/axios";
+import SemestreModalAtt from "./modal/att/SemestreModalAtt";
 
 
 export default function Semester(props: any) {
@@ -40,7 +41,7 @@ export default function Semester(props: any) {
         <Accordion.Body className={style.semesterColor}>
           <h6 className="d-block d-sm-none">{props.semester.start} - {props.semester.end}</h6>
           <div className="d-flex justify-content-start  mb-2">
-            <BlueButton Title="EDITAR"></BlueButton>
+            <SemestreModalAtt></SemestreModalAtt>
           </div>
           <div className="d-flex justify-content-start  mb-2">
             <BlueButton Title="EXCLUIR"></BlueButton>

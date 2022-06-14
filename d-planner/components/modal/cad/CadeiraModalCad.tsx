@@ -4,16 +4,27 @@ import Modal from 'react-bootstrap/Modal'
 import PurpleButton from "../../buttons/PurpleButton";
 import style from "../../styles/Cadeira.module.scss";
 import PurpleTextInput from "../../inputs/PurpleTextInput";
+import SubjectService, { CreateSubject } from "../../../services/subject";
 
 export default function CadeiraModalCad(){
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     const [nomeCadeira, setNomeCadeira] = useState("");
     const [professor, setProfessor] = useState("");
-    const [semestre, setSemestre] = useState("");
+    const [semestreNome, setSemestreNome] = useState("");
     const [status, setStatus] = useState("");
+
+    const newSubject: CreateSubject= {
+        semester_id: 1,
+        name: nomeCadeira,
+        professor: professor,
+        status: status,
+    }
+
+    const handleClose = () => {
+        SubjectService.create(newSubject);
+        setShow(false);
+    }
+    const handleShow = () => setShow(true);
 
   return (
     <>
@@ -54,7 +65,7 @@ export default function CadeiraModalCad(){
                         <PurpleTextInput
                             id="professor"
                             type="text"
-                            placeholder="STATUS"
+                            placeholder="PROFESSOR"
                             value={professor}
                             onChange={e => setProfessor(e.target.value)}
                         >
@@ -66,8 +77,8 @@ export default function CadeiraModalCad(){
                             id="semestre"
                             type="text"
                             placeholder="SEMESTRE"
-                            value={semestre}
-                            onChange={e => setSemestre(e.target.value)}
+                            value={semestreNome}
+                            onChange={e => setSemestreNome(e.target.value)}
                         >
                             {" "}
                         </PurpleTextInput>

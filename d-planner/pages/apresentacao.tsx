@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import Header from "../components/Header";
 import GreenTask from "../components/task/GreenTask";
 import style from "../styles/Calendar.module.scss";
-import ApresentacaoModal from "../components/modal/ApresentacaoModal";
+import ApresentacaoModalCad from "../components/modal/cad/ApresentacaoModalCad";
 import { api } from "./service/axios";
 import { useState, useEffect } from "react";
 
@@ -40,7 +40,7 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <ApresentacaoModal></ApresentacaoModal>
+          <ApresentacaoModalCad></ApresentacaoModalCad>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>

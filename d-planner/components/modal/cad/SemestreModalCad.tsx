@@ -4,15 +4,26 @@ import Modal from 'react-bootstrap/Modal'
 import BlueButton from "../../buttons/BlueButton";
 import style from "../../styles/Semester.module.scss";
 import BlueTextInput from "../../inputs/BlueTextInput";
+import SemesterService, { CreateSemester } from "../../../services/semester";
 
 export default function SemestreModalCad(){
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     const [semestre, setSemestre] = useState("");
     const [dataInicio, setDataInicio] = useState("");
     const [dataFim, setDataFim] = useState("");
+    
+    const newSemestre: CreateSemester= {
+        start: new Date(dataInicio),
+        end: new Date(dataFim),
+        name: semestre
+    }
+
+    const handleClose = () => {
+        SemesterService.create(newSemestre)
+        setShow(false);
+    }
+    
+    const handleShow = () => setShow(true);
 
   return (
     <>
