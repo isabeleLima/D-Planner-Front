@@ -5,7 +5,7 @@ import RedTask from "../components/task/RedTask";
 import OrangeTask from "../components/task/OrangeTask";
 import GreenTask from "../components/task/GreenTask";
 import style from "../styles/Calendar.module.scss";
-import { api } from "./service/axios";
+import { api } from "../services/axios";
 import { useEffect, useState } from "react";
 export default function Home() {
   const [atividades, setAtividades] = useState<[]>();

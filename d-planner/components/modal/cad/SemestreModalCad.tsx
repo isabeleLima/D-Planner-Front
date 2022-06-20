@@ -2,24 +2,23 @@ import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import BlueButton from "../../buttons/BlueButton";
-import style from "../../styles/Semester.module.scss";
+import style from "../../../styles/Semester.module.scss";
 import BlueTextInput from "../../inputs/BlueTextInput";
 import SemesterService, { CreateSemester } from "../../../services/semester";
 
-export default function SemestreModalCad(){
+export default function SemestreModalCad(props: { refetch: () => void }){
     const [show, setShow] = useState(false);
-    const [semestre, setSemestre] = useState("");
-    const [dataInicio, setDataInicio] = useState("");
-    const [dataFim, setDataFim] = useState("");
+    const [nome, setNome] = useState("");
+    const [dataDeInicio, setDataDeInicio] = useState("");
+    const [dataDeFim, setDataDeFim] = useState("");
     
-    const newSemestre: CreateSemester= {
-        start: new Date(dataInicio),
-        end: new Date(dataFim),
-        name: semestre
-    }
-
-    const handleClose = () => {
-        SemesterService.create(newSemestre)
+    const handleClose = async () => {
+        await SemesterService.create({
+            nome,
+            dataDeInicio: new Date(dataDeInicio),
+            dataDeFim: new Date(dataDeFim),
+        })
+        props.refetch()
         setShow(false);
     }
     
@@ -57,8 +56,8 @@ export default function SemestreModalCad(){
                                 id="semestre"
                                 type="text"
                                 placeholder="SEMESTRE"
-                                value={semestre}
-                                onChange={e => setSemestre(e.target.value)}
+                                value={nome}
+                                onChange={e => setNome(e.target.value)}
                             >
                                 {" "}
                         </BlueTextInput>
@@ -73,8 +72,8 @@ export default function SemestreModalCad(){
                                     id="dataInicio"
                                     type="date"
                                     placeholder=""
-                                    value={dataInicio}
-                                    onChange={e => setDataInicio(e.target.value)}
+                                    value={dataDeInicio}
+                                    onChange={e => setDataDeInicio(e.target.value)}
                                 >
                                     {" "}
                                     
@@ -90,8 +89,8 @@ export default function SemestreModalCad(){
                                 id="dataFim"
                                 type="date"
                                 placeholder=""
-                                value={dataFim}
-                                onChange={e => setDataFim(e.target.value)}
+                                value={dataDeFim}
+                                onChange={e => setDataDeFim(e.target.value)}
                             >
                                 {" "}
                                 </BlueTextInput>

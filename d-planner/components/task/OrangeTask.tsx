@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import style from "../../styles/tasks/OrangeTask.module.scss";
 import OrangeButton from "../buttons/OrangeButton";
 import { Container, Row, Col, Stack, Modal,Accordion  } from "react-bootstrap";
-import dataFormater from "../../pages/service/data";
+import dataFormater from "../../services/data";
 export default function OrangeTask(props) {
   const activity = props.activity;
   const days = dataFormater(activity.dataDeEntrega)

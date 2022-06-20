@@ -20,7 +20,7 @@ export default function Login() {
   const handleSubmit: React.FormEventHandler = async e => {
     e.preventDefault();
 
-    signIn(email, senha);
+    signIn({ email, senha });
   };
 
   return (
@@ -33,7 +33,7 @@ export default function Login() {
             gap={2}
           >
             <Image
-              src="/../public/login.png"
+              src="/login.png"
               alt="Login Picture"
               width={411}
               height={400}

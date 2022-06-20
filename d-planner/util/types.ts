@@ -1,30 +1,30 @@
 export interface User {
-  id: string;
-  fullname: string;
-  username: string;
-  email: string;
+  id: string
+  nome: string
+  username: string
+  email: string
 }
 
 export interface Semester {
-  id: number;
-  start: Date;
-  end: Date;
-  name: string;
+  id: number
+  nome: string
+  dataDeInicio: Date
+  dataDeFim: Date
 }
 
 export interface Subjects {
-  id: number;
-  semester_id: number;
-  name: string;
-  professor: string;
-  status: string;
+  id: number
+  semester_id: number
+  name: string
+  professor: string
+  status: string
 }
 
 export interface Events {
-  id: number;
-  subject_id: number;
-  name: string;
-  description: string;
-  deadline: string;
-  type: string;
+  id: number
+  subject_id: number
+  name: string
+  description: string
+  deadline: string
+  type: string
 }

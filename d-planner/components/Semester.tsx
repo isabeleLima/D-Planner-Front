@@ -4,11 +4,17 @@ import Image from "next/image";
 import BlueButton from "./buttons/BlueButton";
 import { Container, Accordion, Stack } from "react-bootstrap";
 import CadeiraWithActivites from "./CadeiraWithActivites";
-import { api } from "../pages/service/axios";
+import { api } from "../services/axios";
 import SemestreModalAtt from "./modal/att/SemestreModalAtt";
+import { Semester as Sem } from "../util/types";
+import SemesterService from "../services/semester";
 
+interface Props {
+  semester: Sem
+  refetch: () => void
+}
 
-export default function Semester(props: any) {
+export default function Semester(props: Props) {
   const [cadeiras, setCadeiras] = useState<any[] | null>([])
 
   useEffect(() => {
@@ -35,16 +41,20 @@ export default function Semester(props: any) {
           <Stack direction="horizontal" gap={3} className={style.semesterColor}>
             <div className={style.logoCalendar}></div>
             <h4>{props.semester.nome}</h4>
-            <h6 className="d-none d-sm-block">{props.semester.start} - {props.semester.end}</h6>
+            <h6 className="d-none d-sm-block">{props.semester.dataDeInicio} - {props.semester.dataDeFim}</h6>
           </Stack>
         </Accordion.Header>
         <Accordion.Body className={style.semesterColor}>
-          <h6 className="d-block d-sm-none">{props.semester.start} - {props.semester.end}</h6>
+          <h6 className="d-block d-sm-none">{props.semester.dataDeInicio} - {props.semester.dataDeFim}</h6>
           <div className="d-flex justify-content-start  mb-2">
             <SemestreModalAtt></SemestreModalAtt>
           </div>
           <div className="d-flex justify-content-start  mb-2">
-            <BlueButton Title="EXCLUIR"></BlueButton>
+            <BlueButton
+              Title="EXCLUIR"
+              onClick={() => SemesterService.delete(props.semester.id).then(() => props.refetch())}
+            >
+            </BlueButton>
           </div>
           {cadeiras?.map(cadeira => (
             <CadeiraWithActivites

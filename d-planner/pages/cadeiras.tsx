@@ -6,7 +6,7 @@ import PurpleButton from "../components/buttons/PurpleButton";
 import style from "../styles/Calendar.module.scss";
 import CadeiraModalCad from "../components/modal/cad/CadeiraModalCad";
 
-import { api } from "./service/axios";
+import { api } from "../services/axios";
 
 import SubjectService, { CreateSubject } from "../services/subject";
 export default function Cadeiras() {

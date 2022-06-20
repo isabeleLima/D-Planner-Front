@@ -3,8 +3,8 @@ import axios, { AxiosResponse } from "axios";
 import style from "../../styles/tasks/RedTask.module.scss";
 import RedButton from "../../components/buttons/RedButton";
 import { Container, Row, Col, Stack, Accordion } from "react-bootstrap";
-import dataFormater from "../../pages/service/data";
-import { api } from "../../pages/service/axios";
+import dataFormater from "../../services/data";
+import { api } from "../../services/axios";
 export default function RedTask(props) {
   const activity = props.activity;
   const days = dataFormater(activity.dataDeEntrega)

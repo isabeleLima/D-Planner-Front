@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import OrangeTask from "../components/task/OrangeTask";
 import style from "../styles/Calendar.module.scss";
 import AtividadeModalCad from "../components/modal/cad/AtividadeModalCad";
-import { api } from "./service/axios";
+import { api } from "../services/axios";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 

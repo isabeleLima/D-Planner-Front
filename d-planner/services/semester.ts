@@ -1,58 +1,37 @@
-import { Semester } from '../util/types';
-import { supabase } from "./api";
+import { Semester } from "../util/types"
+import { api } from "./axios"
+import StorageService from "./storage"
 
 export interface CreateSemester {
-    start: Date;
-    end: Date;
-    name: string;
+  nome: string
+  dataDeInicio: Date
+  dataDeFim: Date
 }
 
 export default class SemesterService {
-    static async list() {
-        const { data, error } = await supabase
-            .from('semesters')
-            .select()
+  static async findByUser() {
+    const user = StorageService.getUser()
+    const { data } = await api.get<Semester[]>(`/semesters/${user?.id}`)
+    return data
+  }
 
-        return data;
-    }
+  static async create(semester: CreateSemester) {
+    const user = StorageService.getUser()
 
-    static async create({ start, end, name }: CreateSemester) {
-        const { data, error } = await supabase
-            .from('semesters')
-            .insert([
-                { start, end, name }
-            ]);
+    const { data } = await api.post("/semesters", {
+      ...semester,
+      userId: user?.id,
+    })
+    return data
+  }
 
-        if (error) {
-            return { error }
-        }
+  static async update(id: number, semester: Semester) {
+    const { data } = await api.put<Semester>(`/semesters/${id}`)
+    return data
+  }
 
-        return data;
-    }
-
-    static async update({ id, start, end, name }: Semester) {
-        const { data, error } = await supabase
-            .from('semesters')
-            .update({ start, end, name })
-            .match({ id })
-
-        if (error) {
-            return { error }
-        }
-
-        return data;
-    }
-
-    static async delete(id: number) {
-        const { data, error } = await supabase
-            .from('subjects')
-            .delete()
-            .match({ id })
-
-        if (error) {
-            return { error }
-        }
-
-        return data;
-    }
+  static async delete(id: number) {
+    const { data } = await api.delete<Semester>(`/semesters/${id}`)
+    return data
+  }
 }

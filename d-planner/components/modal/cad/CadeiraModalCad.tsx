@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import PurpleButton from "../../buttons/PurpleButton";
-import style from "../../styles/Cadeira.module.scss";
+import style from "../../../styles/Cadeira.module.scss";
 import PurpleTextInput from "../../inputs/PurpleTextInput";
 import SubjectService, { CreateSubject } from "../../../services/subject";
 

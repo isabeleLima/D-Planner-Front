@@ -4,32 +4,22 @@ import Header from "../components/Header";
 import Semester from "../components/Semester";
 import style from "../styles/Calendar.module.scss";
 import SemesterService, { CreateSemester } from "../services/semester";
-import SubjectService, { CreateSubject } from "../services/subject";
-import { Semester as Sem } from "../util/types";
+import { Semester as Sem, Subjects } from "../util/types";
 import SemestreModalCad from "../components/modal/cad/SemestreModalCad";
 
-
-import { api } from "./service/axios";
 export default function Semesters() {
+  const [semesters, setSemesters] = useState<Sem[]>([]);
 
-  const [sem, setSem] = useState<any[] | null>([])
-  const [cadeira, setCadeira] = useState<any[] | null>([]);
+  const fetch = () => {
+    SemesterService.findByUser().then(semesters => {
+      console.log(semesters);
+      setSemesters(semesters);
+    });
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const email = localStorage.getItem("email-user");
-    api.post("/user/findUser", { email }).then(result => {
-      api.get(`/semesters/${result?.data.id}`, {
-        headers: {
-          'Authorization': `${token}`
-        }
-      }).then(result => {
-        setSem(result.data)
-        console.log(result.data)
-      });
-    })
+    fetch();
   }, []);
-
 
   return (
     <Container fluid className={"p-0 "}>
@@ -42,13 +32,15 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <SemestreModalCad></SemestreModalCad>
+          <SemestreModalCad refetch={fetch}></SemestreModalCad>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            {sem?.map(semester => (
-              <Semester key={semester.id}
+            {semesters?.map(semester => (
+              <Semester
+                key={semester.id}
                 semester={semester}
+                refetch={fetch}
               ></Semester>
             ))}
           </Col>

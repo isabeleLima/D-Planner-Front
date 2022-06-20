@@ -5,7 +5,7 @@ import OrangeTask from "../components/task/OrangeTask";
 import GreenTask from "../components/task/GreenTask";
 import GrayTask from "../components/task/GrayTask";
 import style from "../styles/Calendar.module.scss";
-import { api } from "./service/axios";
+import { api } from "../services/axios";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 

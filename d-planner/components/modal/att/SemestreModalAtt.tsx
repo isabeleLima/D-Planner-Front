@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import BlueButton from "../../buttons/BlueButton";
-import style from "../../styles/Semester.module.scss";
+import style from "../../../styles/Semester.module.scss";
 import BlueTextInput from "../../inputs/BlueTextInput";
 
 export default function SemestreModalAtt(){

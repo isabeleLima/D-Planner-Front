@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import GreenTask from "../components/task/GreenTask";
 import style from "../styles/Calendar.module.scss";
 import ApresentacaoModalCad from "../components/modal/cad/ApresentacaoModalCad";
-import { api } from "./service/axios";
+import { api } from "../services/axios";
 import { useState, useEffect } from "react";
 
 export default function Semesters() {

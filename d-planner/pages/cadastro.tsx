@@ -4,9 +4,9 @@ import { Col, Container, Form, Row, Stack } from "react-bootstrap";
 import WhiteButton from "../components/buttons/WhiteButton";
 import TextInput from "../components/inputs/TextInput";
 import logo from "../public/logo.png";
-import AuthService from "../services/auth";
 import style from "../styles/Cadastro.module.scss";
 import { useRouter } from "next/router";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Cadastro() {
   const [fullname, setFullname] = useState("");
@@ -14,22 +14,22 @@ export default function Cadastro() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { signUp } = useAuth()
+
   const router = useRouter();
 
   const handleSubmit: React.FormEventHandler = async e => {
     e.preventDefault();
 
-    const { error, user } = await AuthService.signUp({
+    const user = await signUp({
       email,
-      password,
-      fullname,
+      senha: password,
+      nome: fullname,
       username,
     });
 
-    console.log({ error, user });
-
-    if (!error && user) {
-      router.push("/home");
+    if (user) {
+      router.push("/");
     }
   };
 
@@ -45,7 +45,7 @@ export default function Cadastro() {
             gap={2}
           >
             <Image
-              src="/../public/3573382.jpg"
+              src="/3573382.jpg"
               alt="Login Picture"
               width={411}
               height={400}

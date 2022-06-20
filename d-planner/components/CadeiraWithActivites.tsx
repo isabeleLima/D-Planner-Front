@@ -8,7 +8,7 @@ import { Accordion, Stack } from "react-bootstrap";
 
 import { useState, useEffect } from 'react';
 
-import { api } from "../pages/service/axios";
+import { api } from "../services/axios";
 import SubjectService, { CreateSubject } from "../services/subject";
 import CadeiraModalAtt from "./modal/att/CadeiraModalAtt";
 

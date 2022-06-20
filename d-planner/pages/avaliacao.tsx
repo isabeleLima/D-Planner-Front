@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import RedTask from "../components/task/RedTask";
 import style from "../styles/Calendar.module.scss";
 import AvaliacaoModalCad from "../components/modal/cad/AvaliacaoModalCad";
-import { api } from "./service/axios";
+import { api } from "../services/axios";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 
