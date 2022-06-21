@@ -1,7 +1,6 @@
 import style from "../../styles/Header.module.scss";
 import Image from "next/image";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import logo from '../public/logo.png'
 import { useAuth } from "../contexts/AuthContext";
 import { useRouter } from "next/router";
 
@@ -16,7 +15,7 @@ export default function Header() {
         <Navbar.Brand href="/home">
           {" "}
           <Image
-            src={logo}
+            src="/logo.png"
             alt="Login Picture"
             width={45}
             height={45}
@@ -29,7 +28,7 @@ export default function Header() {
             <Nav.Link href="/semesters" className={asPath == "/semesters" ? "active" : ""}>SEMESTRE</Nav.Link>
             <Nav.Link href="/cadeiras" className={asPath == "/cadeiras" ? "active" : ""}>CADEIRA</Nav.Link>
             <Nav.Link href="/atividadesTipos" className={asPath == "/atividadesTipos" ? "active" : ""}>ATIVIDADES</Nav.Link>
-            {user && <NavDropdown title={user.fullname} id="collasible-nav-dropdown">
+            {user && <NavDropdown title={user.nome} id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">

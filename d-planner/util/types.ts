@@ -8,8 +8,8 @@ export interface User {
 export interface Semester {
   id: number
   nome: string
-  dataDeInicio: Date
-  dataDeFim: Date
+  dataDeInicio: string
+  dataDeFim: string
 }
 
 export interface Subjects {

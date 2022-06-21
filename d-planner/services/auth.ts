@@ -30,5 +30,6 @@ export default class AuthService {
     })
     console.log(data)
     StorageService.setUser(data)
+    return data
   }
 }

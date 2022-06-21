@@ -22,7 +22,7 @@ export default function atividadeTipo() {
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image
-                    src="/../public/atvApresentacao.png"
+                    src="/atvApresentacao.png"
                     alt="Login Picture"
                     width={100}
                     height={100}
@@ -50,7 +50,7 @@ export default function atividadeTipo() {
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image
-                    src="/../public/atvAtividade.png"
+                    src="/atvAtividade.png"
                     alt="Login Picture"
                     width={100}
                     height={100}
@@ -78,7 +78,7 @@ export default function atividadeTipo() {
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image
-                    src="/../public/atvAvaliacao.png"
+                    src="/atvAvaliacao.png"
                     alt="Login Picture"
                     width={75}
                     height={90}
@@ -107,7 +107,7 @@ export default function atividadeTipo() {
               <Row>
                 <div className="d-block col-4 col-md-3 col-sm-4 ">
                   <Image
-                    src="/../public/historico.png"
+                    src="/historico.png"
                     alt="Login Picture"
                     width={100}
                     height={100}

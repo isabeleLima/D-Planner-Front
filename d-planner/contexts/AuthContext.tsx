@@ -5,6 +5,7 @@ import Router from "next/router"
 import { api } from "../services/axios"
 
 interface Context {
+  user?: User
   signIn: (user: SignInUser) => Promise<void>
   signUp: (user: SignUpUser) => Promise<User | undefined>
 }
@@ -16,9 +17,13 @@ interface Props {
 }
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
-  const signIn = async (user: SignInUser) => {
+  const [user, setUser] = useState<User>()
+
+  const signIn = async (_user: SignInUser) => {
     try {
-      await AuthService.signIn(user)
+      const user = await AuthService.signIn(_user)
+
+      setUser(user)
 
       Router.push("/home")
     } catch (error) {
@@ -35,7 +40,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
   }
 
   return (
-    <authContext.Provider value={{ signIn, signUp }}>
+    <authContext.Provider value={{ user, signIn, signUp }}>
       {children}
     </authContext.Provider>
   )

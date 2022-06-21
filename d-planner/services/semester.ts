@@ -4,8 +4,8 @@ import StorageService from "./storage"
 
 export interface CreateSemester {
   nome: string
-  dataDeInicio: Date
-  dataDeFim: Date
+  dataDeInicio: string
+  dataDeFim: string
 }
 
 export default class SemesterService {
@@ -17,16 +17,12 @@ export default class SemesterService {
 
   static async create(semester: CreateSemester) {
     const user = StorageService.getUser()
-
-    const { data } = await api.post("/semesters", {
-      ...semester,
-      userId: user?.id,
-    })
+    const { data } = await api.post(`/semesters/${user?.id}`, semester)
     return data
   }
 
-  static async update(id: number, semester: Semester) {
-    const { data } = await api.put<Semester>(`/semesters/${id}`)
+  static async update(id: number, semester: CreateSemester) {
+    const { data } = await api.put<Semester>(`/semesters/${id}`, semester)
     return data
   }
 
