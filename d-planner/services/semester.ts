@@ -11,7 +11,7 @@ export interface CreateSemester {
 export default class SemesterService {
   static async findByUser() {
     const user = StorageService.getUser()
-    const { data } = await api.get<Semester[]>(`/semesters/${user?.id}`)
+    const { data } = await api.get<Semester[]>(`/semesters/findByUser/${user?.id}`)
     return data
   }
 
