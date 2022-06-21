@@ -5,30 +5,17 @@ import OrangeTask from "../components/task/OrangeTask";
 import GreenTask from "../components/task/GreenTask";
 import GrayTask from "../components/task/GrayTask";
 import style from "../styles/Calendar.module.scss";
-import { api } from "../services/axios";
 import { useState, useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
+import ActivityService from "../services/activity";
+import { Activity } from "../util/types";
 
 export default function Historico() {
-  const [atividades, setAtividades] = useState<[]>();
-  const [user, setUser] = useState<AxiosResponse | null>(null);
+  const [atividades, setAtividades] = useState<Activity[]>([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const email = localStorage.getItem("email-user");
-    api.post("/user/findUser", { email }).then(result => {
-      setUser(result);
-
-      api
-        .get(`/activity/listAllByUser/${result?.data.id}`, {
-          headers: {
-            Authorization: `${token}`,
-          },
-        })
-        .then(result => {
-          setAtividades(result.data);
-          console.log(result.data);
-        });
+    ActivityService.findByUser().then(activities => {
+      setAtividades(activities);
+      console.log(activities);
     });
   }, []);
   return (
@@ -45,15 +32,19 @@ export default function Historico() {
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
             {atividades?.map((atividade, index) => {
-              if (atividade?.status == "PERDIDO") {
-                return <GrayTask key={index} activity={atividade}></GrayTask>;
-              } else if (atividade?.type == 1) {
+              if (atividade.type === "ACTIVITY") {
                 return (
                   <OrangeTask key={index} activity={atividade}></OrangeTask>
-                );
-              } else if (atividade.type == 2) {
-                return <RedTask key={index} activity={atividade}></RedTask>;
-              } else if (atividade.type == 3) {
+                )
+              } else if (atividade.type === "PRESENTATION") {
+                return (
+                  <RedTask key={index} activity={atividade}></RedTask>
+                )
+              } else if (atividade.type === "EVALUATION")  {
+                return (
+                  <RedTask key={index} activity={atividade}></RedTask>
+                )
+              } else {
                 return <GreenTask key={index} activity={atividade}></GreenTask>;
               }
             })}

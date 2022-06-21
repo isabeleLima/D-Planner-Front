@@ -2,10 +2,16 @@ import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import GreenButton from "../../buttons/GreenButton";
-import style from "../../styles/AtividadeTipos.module.scss";
+import style from "../../../styles/AtividadeTipos.module.scss";
 import GreenTextInput from "../../inputs/GreenTextInput";
+import ActivityService from "../../../services/activity";
+import SubjectService from "../../../services/subject";
 
-export default function ApresentacaoModalAtt(){
+interface Props {
+    refetch: () => void
+}
+
+export default function ApresentacaoModalAtt(props: Props){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

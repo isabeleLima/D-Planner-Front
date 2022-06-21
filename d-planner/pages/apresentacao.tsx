@@ -1,33 +1,22 @@
 import { Col, Container, Row, Stack, Form } from "react-bootstrap";
-import axios, { AxiosResponse } from "axios";
 import Header from "../components/Header";
 import GreenTask from "../components/task/GreenTask";
 import style from "../styles/Calendar.module.scss";
 import ApresentacaoModalCad from "../components/modal/cad/ApresentacaoModalCad";
-import { api } from "../services/axios";
 import { useState, useEffect } from "react";
+import ActivityService from "../services/activity";
+import { Activity } from "../util/types";
 
 export default function Semesters() {
-  const [atividades, setAtividades] = useState<[]>();
-  const [user, setUser] = useState<AxiosResponse | null>(null);
+  const [atividades, setAtividades] = useState<Activity[]>([]);
+
+  const fetch = () => ActivityService.findByType("PRESENTATION").then(activities => {
+    setAtividades(activities);
+    console.log(activities);
+  });
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const email = localStorage.getItem("email-user");
-    api.post("/user/findUser", { email }).then(result => {
-      setUser(result);
-
-      api
-        .get(`/activity/listByUserType/${result?.data.id}/3`, {
-          headers: {
-            Authorization: `${token}`,
-          },
-        })
-        .then(result => {
-          setAtividades(result.data);
-          console.log(result.data);
-        });
-    });
+    fetch()
   }, []);
   return (
     <Container fluid className={"p-0 "}>
@@ -40,11 +29,11 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <ApresentacaoModalCad></ApresentacaoModalCad>
+          <ApresentacaoModalCad refetch={fetch}></ApresentacaoModalCad>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            {atividades?.map((atividade, index) => {
+            {atividades.map((atividade, index) => {
               return <GreenTask key={index} activity={atividade}></GreenTask>;
             })}
           </Col>

@@ -3,31 +3,17 @@ import Header from "../components/Header";
 import RedTask from "../components/task/RedTask";
 import style from "../styles/Calendar.module.scss";
 import AvaliacaoModalCad from "../components/modal/cad/AvaliacaoModalCad";
-import { api } from "../services/axios";
 import { useState, useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
-
+import ActivityService from "../services/activity";
+import { Activity } from "../util/types";
 
 export default function Semesters() {
-  const [atividades, setAtividades] = useState<[]>();
-  const [user, setUser] = useState<AxiosResponse | null>(null);
+  const [atividades, setAtividades] = useState<Activity[]>([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const email = localStorage.getItem("email-user");
-    api.post("/user/findUser", { email }).then(result => {
-      setUser(result);
-
-      api
-        .get(`/activity/listByUserType/${result?.data.id}/2`, {
-          headers: {
-            Authorization: `${token}`,
-          },
-        })
-        .then(result => {
-          setAtividades(result.data);
-          console.log(result.data);
-        });
+    ActivityService.findByType("EVALUATION").then(activities => {
+      setAtividades(activities);
+      console.log(activities);
     });
   }, []);
   return (

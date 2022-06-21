@@ -16,6 +16,7 @@ export interface SignInUser {
 
 export default class AuthService {
   static async signUp(user: SignUpUser) {
+    console.log({ user })
     const { data } = await api.post<User>("/user/new", user)
     return data
   }

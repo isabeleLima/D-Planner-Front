@@ -9,7 +9,8 @@ import { useState, useEffect } from 'react';
 import { api } from "../services/axios";
 import SubjectService, { CreateSubject } from "../services/subject";
 import CadeiraModalAtt from "./modal/att/CadeiraModalAtt";
-import { Subjects } from "../util/types";
+import { Activity, Subjects } from "../util/types";
+import ActivityService from "../services/activity";
 
 interface Props {
   cadeira: Subjects
@@ -18,17 +19,12 @@ interface Props {
 
 export default function CadeiraWithActivites(props: Props) {
 
-  const [atividades, setAtividades] = useState<[]>();
+  const [atividades, setAtividades] = useState<Activity[]>([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    api.get(`/activity/listBySubject/${props.cadeira.id}`, {
-      headers: {
-        'Authorization': `${token}`
-      }
-    }).then(result => {
-      setAtividades(result.data)
-      console.log(result.data)
+    ActivityService.findBySubject(props.cadeira.id).then(activities => {
+      setAtividades(activities)
+      console.log(activities)
     });
   }, []);
 
@@ -38,7 +34,7 @@ export default function CadeiraWithActivites(props: Props) {
         <Accordion.Header>
           <Stack direction="horizontal" gap={3} className={style.cadeiraColor}>
             <div className={style.logoCadeira}></div>
-            <h4>{props.cadeira.name}</h4>
+            <h4>{props.cadeira.nome}</h4>
           </Stack>
         </Accordion.Header>
         <Accordion.Body className={style.cadeiraColor}>
@@ -52,17 +48,17 @@ export default function CadeiraWithActivites(props: Props) {
             >
             </PurpleButton>
           </div>
-          {atividades?.map((atividade, index) => {
-            if (atividade?.type == 1) {
+          {atividades.map((atividade, index) => {
+            if (atividade.type === "ACTIVITY") {
               return (
-                <OrangeTask key={index}></OrangeTask>
+                <OrangeTask key={index} activity={atividade}></OrangeTask>
               )
-            } else if (atividade.type == 2) {
+            } else if (atividade.type === "PRESENTATION") {
               return (
-                <RedTask key={index}></RedTask>
+                <RedTask key={index} activity={atividade}></RedTask>
               )
             } else {
-              <GreenTask key={index}></GreenTask>
+              <GreenTask key={index} activity={atividade}></GreenTask>
             }
           })}
         </Accordion.Body>

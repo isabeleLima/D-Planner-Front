@@ -14,17 +14,25 @@ export interface Semester {
 
 export interface Subjects {
   id: number
-  semester_id: number
-  name: string
+  nome: string
   professor: string
+  semester: Semester
+}
+
+export interface Activity {
+  id: number
+  nome: string
+  descricao: string
+  subject: Subjects
+  dataDeEntrega: string
+  type: ActivityType
   status: string
 }
 
-export interface Events {
-  id: number
-  subject_id: number
-  name: string
-  description: string
-  deadline: string
-  type: string
-}
+export const ActivityType = {
+  ACTIVITY: "ACTIVITY",
+  PRESENTATION: "PRESENTATION",
+  EVALUATION: "EVALUATION",
+} as const
+
+export type ActivityType = typeof ActivityType[keyof typeof ActivityType]

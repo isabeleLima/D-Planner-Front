@@ -2,10 +2,14 @@ import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import OrangeButton from "../../buttons/OrangeButton";
-import style from "../../styles/AtividadeTipos.module.scss";
+import style from "../../../styles/AtividadeTipos.module.scss";
 import OrangeTextInput from "../../inputs/OrangeTextInput";
 
-export default function AtividadeModalAtt(){
+interface Props {
+    refetch: () => void
+}
+
+export default function AtividadeModalAtt(props: Props){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

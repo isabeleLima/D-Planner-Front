@@ -5,13 +5,16 @@ import RedButton from "../../components/buttons/RedButton";
 import { Container, Row, Col, Stack, Accordion } from "react-bootstrap";
 import dataFormater from "../../services/data";
 import { api } from "../../services/axios";
-export default function RedTask(props) {
+import ActivityService from "../../services/activity";
+import { Activity } from "../../util/types";
+
+interface Props {
+  activity: Activity
+}
+
+export default function RedTask(props: Props) {
   const activity = props.activity;
   const days = dataFormater(activity.dataDeEntrega)
-
-  const [atividades, setAtividades] = useState<[]>();
-  const [user, setUser] = useState<AxiosResponse | null>(null);
-  const token = localStorage.getItem("token");
 
   const [display, setDisplay] = useState<[]| String>();
 
@@ -43,11 +46,7 @@ export default function RedTask(props) {
               <RedButton onClick={() => {
                 if(activity){
                   console.log(activity);
-                  api.put(`/activity/close`,{activity}, {
-                    headers: {
-                      'Authorization': `${token}`
-                    }
-                  })
+                  ActivityService.close(activity)
                 }
             }} Title="CONCLUIR"></RedButton>
             </div>

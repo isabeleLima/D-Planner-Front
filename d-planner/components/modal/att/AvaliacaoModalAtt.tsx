@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import RedButton from "../../buttons/RedButton";
-import style from "../../styles/AtividadeTipos.module.scss";
+import style from "../../../styles/AtividadeTipos.module.scss";
 import RedTextInput from "../../inputs/RedTextInput";
 
 export default function AvaliacaoModalAtt(){

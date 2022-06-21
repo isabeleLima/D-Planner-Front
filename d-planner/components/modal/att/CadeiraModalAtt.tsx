@@ -26,14 +26,13 @@ export default function CadeiraModalAtt({ cadeira, refetch }: Props){
 
     const handleShow = () => {
         setShow(true)
-        setName(cadeira.name)
+        setName(cadeira.nome)
 
-        SemesterService.findById(cadeira.semester_id).then(semestre => {
+        SemesterService.findById(cadeira.semester.id).then(semestre => {
             setSemestreNome(semestre.nome)
         });
 
         setProfessor(cadeira.professor)
-        setStatus(cadeira.status)
     };
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async e => {

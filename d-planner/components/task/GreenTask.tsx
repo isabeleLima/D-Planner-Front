@@ -3,8 +3,13 @@ import style from "../../styles/tasks/GreenTask.module.scss";
 import GreenButton from "../buttons/GreenButton";
 import { Container, Row, Col, Stack, Modal,Accordion } from "react-bootstrap";
 import dataFormater from "../../services/data";
+import { Activity } from "../../util/types";
 
-export default function GreenTask(props:any) {
+interface Props {
+  activity: Activity
+}
+
+export default function GreenTask(props:Props) {
   const activity = props.activity;  
   const days = dataFormater(activity.dataDeEntrega)
   const [display, setDisplay] = useState<[]| String>();
