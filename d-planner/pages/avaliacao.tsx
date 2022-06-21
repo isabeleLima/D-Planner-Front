@@ -1,20 +1,22 @@
-import { Col, Container, Row, Stack, Form } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import Header from "../components/Header";
-import RedTask from "../components/task/RedTask";
-import style from "../styles/Calendar.module.scss";
 import AvaliacaoModalCad from "../components/modal/cad/AvaliacaoModalCad";
-import { useState, useEffect } from "react";
+import RedTask from "../components/task/RedTask";
 import ActivityService from "../services/activity";
+import style from "../styles/Calendar.module.scss";
 import { Activity } from "../util/types";
 
 export default function Semesters() {
   const [atividades, setAtividades] = useState<Activity[]>([]);
 
+const fetch = () => ActivityService.findByType("EVALUATION").then(activities => {
+  setAtividades(activities);
+  console.log(activities);
+});
+
   useEffect(() => {
-    ActivityService.findByType("EVALUATION").then(activities => {
-      setAtividades(activities);
-      console.log(activities);
-    });
+    fetch()
   }, []);
   return (
     <Container fluid className={"p-0 "}>
@@ -27,7 +29,7 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <AvaliacaoModalCad></AvaliacaoModalCad>
+          <AvaliacaoModalCad refetch={fetch}></AvaliacaoModalCad>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>

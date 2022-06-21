@@ -1,60 +1,66 @@
-import { Events } from '../util/types';
-import { supabase } from "./api";
+import { Activity } from "../util/types"
+import { supabase } from "./api"
 
 export interface CreateEvent {
-    subject_id: number;
-    name: string;
-    description: string;
-    deadline: string;
-    type: string;
+  subject_id: number
+  name: string
+  description: string
+  deadline: string
+  type: string
 }
 
 export default class EventService {
-    static async list() {
-        const { data, error } = await supabase
-            .from('events')
-            .select()
+  static async list() {
+    const { data, error } = await supabase.from("events").select()
 
-        return data;
+    return data
+  }
+
+  static async create({
+    subject_id,
+    name,
+    description,
+    deadline,
+    type,
+  }: CreateEvent) {
+    const { data, error } = await supabase
+      .from("events")
+      .insert([{ subject_id, name, description, deadline, type }])
+
+    if (error) {
+      return { error }
     }
 
-    static async create({ subject_id, name, description, deadline, type }: CreateEvent) {
-        const { data, error } = await supabase
-            .from('events')
-            .insert([
-                { subject_id, name, description, deadline, type }
-            ]);
+    return data
+  }
 
-        if (error) {
-            return { error }
-        }
+  static async update({
+    id,
+    subject_id,
+    name,
+    description,
+    deadline,
+    type,
+  }: Activity) {
+    const { data, error } = await supabase
+      .from("events")
+      .update({ subject_id, name, description, deadline, type })
+      .match({ id })
 
-        return data;
+    if (error) {
+      return { error }
     }
 
-    static async update({ id, subject_id, name, description, deadline, type }: Events) {
-        const { data, error } = await supabase
-            .from('events')
-            .update({ subject_id, name, description, deadline, type })
-            .match({ id })
+    return data
+  }
 
-        if (error) {
-            return { error }
-        }
+  static async delete(id: number) {
+    const { data, error } = await supabase.from("events").delete().match({ id })
 
-        return data;
+    if (error) {
+      return { error }
     }
 
-    static async delete(id: number) {
-        const { data, error } = await supabase
-            .from('events')
-            .delete()
-            .match({ id })
-
-        if (error) {
-            return { error }
-        }
-
-        return data;
-    }
+    return data
+  }
 }

@@ -38,6 +38,11 @@ export default class ActivityService {
     return data
   }
 
+  static async update(id: number, activity: CreateActivity): Promise<Activity> {
+    const { data } = await api.put<Activity>(`/activity/${id}`, activity)
+    return data
+  }
+
   static async close(activity: Activity): Promise<Activity> {
     const { data } = await api.put<Activity>("/activity/close", activity)
     return data

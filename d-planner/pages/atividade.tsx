@@ -10,11 +10,13 @@ import { Activity } from "../util/types";
 export default function Semesters() {
   const [atividades, setAtividades] = useState<Activity[]>([]);
 
+  const fetch = () => ActivityService.findByType("ACTIVITY").then(activities => {
+    setAtividades(activities);
+    console.log(activities);
+  });
+
   useEffect(() => {
-    ActivityService.findByType("ACTIVITY").then(activities => {
-      setAtividades(activities);
-      console.log(activities);
-    });
+    fetch()
   }, []);
   return (
     <Container fluid className={"p-0 "}>
@@ -27,7 +29,7 @@ export default function Semesters() {
           </Col>
         </Row>
         <Row>
-          <AtividadeModalCad></AtividadeModalCad>
+          <AtividadeModalCad refetch={fetch}></AtividadeModalCad>
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
