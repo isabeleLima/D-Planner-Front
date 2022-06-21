@@ -8,7 +8,7 @@ export default function dataFormater(dataDeEntrega) {
   if (days == 0) {
     return "Hoje"
   } else if (days == 1) {
-    return "1 dia"
+    return "Hoje"
   } else if (days == -1) {
     return "Há 1 dia"
   } else if (days > 0) {
