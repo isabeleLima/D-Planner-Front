@@ -5,14 +5,18 @@ import RedTask from "./task/RedTask";
 import OrangeTask from "./task/OrangeTask";
 import GreenTask from "./task/GreenTask";
 import { Accordion, Stack } from "react-bootstrap";
-
 import { useState, useEffect } from 'react';
-
 import { api } from "../services/axios";
 import SubjectService, { CreateSubject } from "../services/subject";
 import CadeiraModalAtt from "./modal/att/CadeiraModalAtt";
+import { Subjects } from "../util/types";
 
-export default function CadeiraWithActivites(props: any) {
+interface Props {
+  cadeira: Subjects
+  refetch: () => void
+}
+
+export default function CadeiraWithActivites(props: Props) {
 
   const [atividades, setAtividades] = useState<[]>();
 
@@ -30,22 +34,23 @@ export default function CadeiraWithActivites(props: any) {
 
   return (
     <Accordion defaultActiveKey="0" flush>
-      <Accordion.Item eventKey={props.event}>
+      <Accordion.Item eventKey="1">
         <Accordion.Header>
           <Stack direction="horizontal" gap={3} className={style.cadeiraColor}>
             <div className={style.logoCadeira}></div>
-            <h4>{props.cadeira?.nome}</h4>
+            <h4>{props.cadeira.name}</h4>
           </Stack>
         </Accordion.Header>
         <Accordion.Body className={style.cadeiraColor}>
           <div className="d-flex justify-content-start  mb-2">
-            <CadeiraModalAtt></CadeiraModalAtt>
+            <CadeiraModalAtt cadeira={props.cadeira} refetch={props.refetch}></CadeiraModalAtt>
           </div>
           <div className="d-flex justify-content-start  mb-2">
-            <PurpleButton onClick={() => {
-              SubjectService.delete(props.cadeira?.id);
-            }}
-              Title="EXCLUIR"></PurpleButton>
+            <PurpleButton
+              Title="EXCLUIR"
+              onClick={() => SubjectService.delete(props.cadeira.id).then(() => props.refetch())}
+            >
+            </PurpleButton>
           </div>
           {atividades?.map((atividade, index) => {
             if (atividade?.type == 1) {

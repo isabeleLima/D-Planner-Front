@@ -5,40 +5,24 @@ import CadeiraWithActivites from "../components/CadeiraWithActivites";
 import PurpleButton from "../components/buttons/PurpleButton";
 import style from "../styles/Calendar.module.scss";
 import CadeiraModalCad from "../components/modal/cad/CadeiraModalCad";
-
+import { Subjects as Subj } from "../util/types";
 import { api } from "../services/axios";
-
 import SubjectService, { CreateSubject } from "../services/subject";
-export default function Cadeiras() {
-  const newSubject: CreateSubject = {
-    semester_id: 1,
-    name: "Calculo Numerico",
-    professor: "Paulo Cezar",
-    status: "ativo",
-  };
-  const [modalVisible, setModalVisible] = useState(false);
 
-  const [cadeiras, setCadeiras] = useState<any[] | null>([])
+export default function Cadeiras() {
+  const [cadeiras, setCadeiras] = useState<Subj[]>([]);
+
+  const fetch = () => {
+    SubjectService.findBySemester_User_Id().then(cadeiras => {
+      console.log(cadeiras);
+      setCadeiras(cadeiras);
+    });
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    fetch();
+  }, []);
 
-    const email = localStorage.getItem("email-user");
-
-    api.post("/user/findUser",
-      { email }).then(result => {
-        api.get(`/subject/findUserId/${result.data.id}`, {
-          headers: {
-            'Authorization': `${token}`
-          }
-        }).then(result => {
-          setCadeiras(result?.data)
-
-          console.log(result.data)
-        })
-      })
-
-  }, [])
   return (
     <Container fluid className={"p-0 "}>
       <Header></Header>
@@ -51,13 +35,14 @@ export default function Cadeiras() {
         </Row>
 
         <Row>
-          <CadeiraModalCad></CadeiraModalCad>
+          <CadeiraModalCad refetch={fetch}></CadeiraModalCad>
 
           <Col className={"col-12 rounded-bottom pt-4"}>
             {cadeiras?.map(cadeira => (
               <CadeiraWithActivites
                 key={cadeira.id}
                 cadeira={cadeira}
+                refetch={fetch}
               ></CadeiraWithActivites>
             ))}
           </Col>

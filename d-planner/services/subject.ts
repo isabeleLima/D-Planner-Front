@@ -1,5 +1,6 @@
-import { Subjects } from '../util/types';
-import { supabase } from "./api";
+import { Subjects } from '../util/types'
+import { api } from "./axios"
+import StorageService from "./storage"
 
 export interface CreateSubject {
     semester_id: number;
@@ -9,51 +10,24 @@ export interface CreateSubject {
 }
 
 export default class SubjectService {
-    static async list() {
-        const { data, error } = await supabase
-            .from('subjects')
-            .select()
-
-        return data;
+    static async findBySemester_User_Id() {
+        const user = StorageService.getUser()
+        const { data } = await api.get<Subjects[]>(`/subject/findUserId/${user?.id}`)
+        return data
     }
 
-    static async create({ semester_id, name, professor, status }: CreateSubject) {
-        const { data, error } = await supabase
-            .from('subjects')
-            .insert([
-                { semester_id, name, professor, status }
-            ]);
-
-        if (error) {
-            return { error }
-        }
-
-        return data;
+    static async create(cadeira: CreateSubject) {
+        const { data } = await api.post(`/subject`, cadeira)
+        return data
     }
 
-    static async update({ id, semester_id, name, professor, status }: Subjects) {
-        const { data, error } = await supabase
-            .from('subjects')
-            .update({ semester_id, name, professor, status })
-            .match({ id })
-
-        if (error) {
-            return { error }
-        }
-
-        return data;
+    static async update(id: number, cadeira: CreateSubject) {
+        const { data } = await api.put<Subjects>(`/subject/${id}`, cadeira)
+        return data
     }
-
-    static async delete(id: number) {
-        const { data, error } = await supabase
-            .from('subjects')
-            .delete()
-            .match({ id })
-
-        if (error) {
-            return { error }
-        }
-
-        return data;
+    
+      static async delete(id: number) {
+        const { data } = await api.delete<Subjects>(`/subject/${id}`)
+        return data
     }
 }

@@ -4,16 +4,61 @@ import Modal from 'react-bootstrap/Modal'
 import PurpleButton from "../../buttons/PurpleButton";
 import style from "../../../styles/Cadeira.module.scss";
 import PurpleTextInput from "../../inputs/PurpleTextInput";
+import { Subjects } from "../../../util/types";
+import SemesterService from "../../../services/semester";
+import SubjectService from "../../../services/subject";
 
-export default function CadeiraModalAtt(){
+interface Props {
+    cadeira: Subjects
+    refetch: () => void
+}
+
+export default function CadeiraModalAtt({ cadeira, refetch }: Props){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
-    const [nomeCadeira, setNomeCadeira] = useState("");
+    const [name, setName] = useState("");
     const [professor, setProfessor] = useState("");
-    const [semestre, setSemestre] = useState("");
+    const [semestreNome, setSemestreNome] = useState("");
     const [status, setStatus] = useState("");
+
+    let semester_id: number
+
+    const handleShow = () => {
+        setShow(true)
+        setName(cadeira.name)
+
+        SemesterService.findById(cadeira.semester_id).then(semestre => {
+            setSemestreNome(semestre.nome)
+        });
+
+        setProfessor(cadeira.professor)
+        setStatus(cadeira.status)
+    };
+
+    const handleSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
+        e.preventDefault()
+
+        SemesterService.findByName(semestreNome).then(semestre => {
+            console.log(semestre);
+            semester_id = semestre.id
+        });
+    
+        try {
+          await SubjectService.update(cadeira.id, {
+            semester_id,
+            name,
+            professor,
+            status
+          })
+    
+          handleClose()
+    
+          refetch()
+        } catch (error) {
+          console.log(error)
+        }
+    }
 
   return (
     <>
@@ -41,11 +86,11 @@ export default function CadeiraModalAtt(){
             <Form>
                     <div className="my-4">
                         <PurpleTextInput
-                            id="nomeCadeira"
+                            id="name"
                             type="text"
                             placeholder="NOME DA CADEIRA"
-                            value={nomeCadeira}
-                            onChange={e => setNomeCadeira(e.target.value)}
+                            value={name}
+                            onChange={e => setName(e.target.value)}
                         >
                             {" "}
                         </PurpleTextInput>
@@ -63,11 +108,11 @@ export default function CadeiraModalAtt(){
                     </div>
                     <div className="mb-4">
                         <PurpleTextInput
-                            id="semestre"
+                            id="semestreNome"
                             type="text"
                             placeholder="SEMESTRE"
-                            value={semestre}
-                            onChange={e => setSemestre(e.target.value)}
+                            value={semestreNome}
+                            onChange={e => setSemestreNome(e.target.value)}
                         >
                             {" "}
                         </PurpleTextInput>
@@ -87,7 +132,7 @@ export default function CadeiraModalAtt(){
         </Modal.Body>
         <Modal.Footer>
             <PurpleButton
-                onClick={ handleClose }
+                onClick={ handleSubmit }
                 Title='ATUALIZAR'>
             </PurpleButton> 
         </Modal.Footer>

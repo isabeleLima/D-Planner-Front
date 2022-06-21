@@ -15,6 +15,16 @@ export default class SemesterService {
     return data
   }
 
+  static async findByName( nome: any) {
+    const { data } = await api.get<Semester>(`/semesters/findByNome`, nome)
+    return data
+  }
+
+  static async findById( id: number) {
+    const { data } = await api.get<Semester>(`/semesters/${id}`)
+    return data
+  }
+
   static async create(semester: CreateSemester) {
     const user = StorageService.getUser()
     const { data } = await api.post(`/semesters/${user?.id}`, semester)

@@ -1,29 +1,46 @@
-import { useState } from "react";
-import { Button, Container, Form, Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Container, Form, Row, Col, Dropdown } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import PurpleButton from "../../buttons/PurpleButton";
 import style from "../../../styles/Cadeira.module.scss";
 import PurpleTextInput from "../../inputs/PurpleTextInput";
 import SubjectService, { CreateSubject } from "../../../services/subject";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+import SemesterService from "../../../services/semester";
+import { Semester as Sem, Subjects } from "../../../util/types";
+import Semester from "../../Semester";
 
-export default function CadeiraModalCad(){
+export default function CadeiraModalCad(props: { refetch: () => void }){
     const [show, setShow] = useState(false);
-    const [nomeCadeira, setNomeCadeira] = useState("");
+    const [name, setName] = useState("");
     const [professor, setProfessor] = useState("");
     const [semestreNome, setSemestreNome] = useState("");
     const [status, setStatus] = useState("");
+    
+    let semester_id: number
+    
+    const fetch = () => {
+        SemesterService.findByName(semestreNome).then(semestre => {
+            console.log(semestre);
+            semester_id = semestre.id
+        });
+    };
+    
+    useEffect(() => {
+        fetch();
+    }, []);
 
-    const newSubject: CreateSubject= {
-        semester_id: 1,
-        name: nomeCadeira,
-        professor: professor,
-        status: status,
-    }
-
-    const handleClose = () => {
-        SubjectService.create(newSubject);
+    const handleClose = async () => {
+        await SubjectService.create({
+            semester_id,
+            name,
+            professor,
+            status,
+        })
+        props.refetch()
         setShow(false);
     }
+
     const handleShow = () => setShow(true);
 
   return (
@@ -52,11 +69,11 @@ export default function CadeiraModalCad(){
             <Form>
                     <div className="my-4">
                         <PurpleTextInput
-                            id="nomeCadeira"
+                            id="name"
                             type="text"
                             placeholder="NOME DA CADEIRA"
-                            value={nomeCadeira}
-                            onChange={e => setNomeCadeira(e.target.value)}
+                            value={name}
+                            onChange={e => setName(e.target.value)}
                         >
                             {" "}
                         </PurpleTextInput>
