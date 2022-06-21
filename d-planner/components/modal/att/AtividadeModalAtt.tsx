@@ -92,7 +92,11 @@ export default function AtividadeModalAtt({ activity, refetch }: Props) {
                   >
                     <option value="0">Cadeira</option>
                     {subjects.map(sub => (
-                      <option value={sub.id} selected={sub.id === cadeira}>
+                      <option
+                        value={sub.id}
+                        selected={sub.id === cadeira}
+                        key={sub.id}
+                      >
                         {sub.nome}
                       </option>
                     ))}

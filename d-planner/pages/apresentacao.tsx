@@ -33,8 +33,8 @@ export default function Semesters() {
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            {atividades.map((atividade, index) => {
-              return <GreenTask key={index} activity={atividade}></GreenTask>;
+            {atividades.map((atividade) => {
+              return <GreenTask key={atividade.id} activity={atividade} refetch={fetch}></GreenTask>;
             })}
           </Col>
         </Row>

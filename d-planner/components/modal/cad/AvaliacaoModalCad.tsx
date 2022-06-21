@@ -33,7 +33,7 @@ export default function AvaliacaoModalCad({ refetch }: Props) {
       dataDeEntrega: entrega,
       descricao,
       status: "ABERTO",
-      type: "PRESENTATION",
+      type: "EVALUATION",
       subject: {
         id: cadeira,
       },
@@ -88,7 +88,7 @@ export default function AvaliacaoModalCad({ refetch }: Props) {
                   >
                     <option value="0">Cadeira</option>
                     {subjects.map(sub => (
-                      <option value={sub.id}>{sub.nome}</option>
+                      <option value={sub.id} key={sub.id}>{sub.nome}</option>
                     ))}
                   </Form.Select>
                 </Col>

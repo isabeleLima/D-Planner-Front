@@ -18,6 +18,13 @@ export default class SubjectService {
     return data
   }
 
+  static async findBySemesterId(semesterId: number) {
+    const { data } = await api.get<Subjects[]>("/subject", {
+      params: semesterId,
+    })
+    return data
+  }
+
   static async create(cadeira: CreateSubject) {
     const { data } = await api.post(`/subject`, cadeira)
     return data

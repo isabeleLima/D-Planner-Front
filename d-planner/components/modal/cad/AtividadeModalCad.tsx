@@ -91,7 +91,7 @@ export default function AtividadeModalCad({ refetch }: Props) {
                   >
                     <option value="0">Semestre</option>
                     {subjects.map(sub => (
-                      <option value={sub.id}>{sub.nome}</option>
+                      <option value={sub.id} key={sub.id}>{sub.nome}</option>
                     ))}
                   </Form.Select>
                 </Col>

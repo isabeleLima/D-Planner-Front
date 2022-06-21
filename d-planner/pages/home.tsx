@@ -11,11 +11,15 @@ import ActivityService from "../services/activity";
 export default function Home() {
   const [atividades, setAtividades] = useState<Activity[]>([]);
 
-  useEffect(() => {
+  const fetch = () => {
     ActivityService.findByUser().then(activities => {
       setAtividades(activities);
       console.log(activities);
     });
+  }
+
+  useEffect(() => {
+    fetch()
   }, []);
 
   return (
@@ -29,17 +33,17 @@ export default function Home() {
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-            {atividades?.map((atividade, index) => {
+            {atividades?.map((atividade) => {
               if (atividade.type === "ACTIVITY") {
                 return (
-                  <OrangeTask key={index} activity={atividade}></OrangeTask>
+                  <OrangeTask key={atividade.id} activity={atividade} refetch={fetch}></OrangeTask>
                 )
               } else if (atividade.type === "PRESENTATION") {
                 return (
-                  <RedTask key={index} activity={atividade}></RedTask>
+                  <GreenTask key={atividade.id} activity={atividade} refetch={fetch}></GreenTask>
                 )
               } else {
-                <GreenTask key={index} activity={atividade}></GreenTask>
+                <RedTask key={atividade.id} activity={atividade} refetch={fetch}></RedTask>
               }
             })}
           </Col>

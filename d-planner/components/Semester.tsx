@@ -6,9 +6,10 @@ import { Container, Accordion, Stack } from "react-bootstrap";
 import CadeiraWithActivites from "./CadeiraWithActivites";
 import { api } from "../services/axios";
 import SemestreModalAtt from "./modal/att/SemestreModalAtt";
-import { Semester as Sem } from "../util/types";
+import { Semester as Sem, Subjects } from "../util/types";
 import SemesterService from "../services/semester";
 import moment from "moment";
+import SubjectService from "../services/subject";
 
 interface Props {
   semester: Sem
@@ -16,23 +17,14 @@ interface Props {
 }
 
 export default function Semester(props: Props) {
-  const [cadeiras, setCadeiras] = useState<any[] | null>([])
+  const [cadeiras, setCadeiras] = useState<Subjects[]>([])
+
+  const fetch = () => {
+    SubjectService.findBySemesterId(props.semester.id).then(setCadeiras)
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    api.get(`/subject`, {
-      headers: {
-        'Authorization': `${token}`
-      },
-      params: {
-        'semesterId': props.semester.id
-      }
-    }).then(result => {
-      setCadeiras(result?.data)
-
-      console.log(result.data)
-    })
+    fetch()
   }, [])
 
   return (
@@ -65,10 +57,11 @@ export default function Semester(props: Props) {
             >
             </BlueButton>
           </div>
-          {cadeiras?.map(cadeira => (
+          {cadeiras.map(cadeira => (
             <CadeiraWithActivites
               key={cadeira.id}
               cadeira={cadeira}
+              refetch={fetch}
             ></CadeiraWithActivites>
           ))}
         </Accordion.Body>

@@ -33,8 +33,8 @@ const fetch = () => ActivityService.findByType("EVALUATION").then(activities => 
         </Row>
         <Row>
           <Col className={"col-12 rounded-bottom pt-4"}>
-          {atividades?.map((atividade, index) => {
-              return <RedTask key={index} activity={atividade}></RedTask>;
+          {atividades.map((atividade) => {
+              return <RedTask key={atividade.id} activity={atividade} refetch={fetch}></RedTask>;
             })}
           </Col>
         </Row>

@@ -48,17 +48,17 @@ export default function CadeiraWithActivites(props: Props) {
             >
             </PurpleButton>
           </div>
-          {atividades.map((atividade, index) => {
+          {atividades.map((atividade) => {
             if (atividade.type === "ACTIVITY") {
               return (
-                <OrangeTask key={index} activity={atividade}></OrangeTask>
+                <OrangeTask key={atividade.id} activity={atividade} refetch={props.refetch}></OrangeTask>
               )
             } else if (atividade.type === "PRESENTATION") {
               return (
-                <RedTask key={index} activity={atividade}></RedTask>
+                <GreenTask key={atividade.id} activity={atividade} refetch={props.refetch}></GreenTask>
               )
             } else {
-              <GreenTask key={index} activity={atividade}></GreenTask>
+              <RedTask key={atividade.id} activity={atividade} refetch={props.refetch}></RedTask>
             }
           })}
         </Accordion.Body>

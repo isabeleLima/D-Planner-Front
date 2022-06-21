@@ -4,9 +4,11 @@ import OrangeButton from "../buttons/OrangeButton";
 import { Container, Row, Col, Stack, Modal,Accordion  } from "react-bootstrap";
 import dataFormater from "../../services/data";
 import { Activity } from "../../util/types";
+import ActivityService from "../../services/activity";
 
 interface Props {
   activity: Activity
+  refetch: () => void
 }
 
 export default function OrangeTask(props: Props) {
@@ -39,7 +41,16 @@ export default function OrangeTask(props: Props) {
             {activity.descricao}
             </p>
             <div  className={` ${display} d-flex justify-content-start  mb-2`}>
-              <OrangeButton Title="CONCLUIR"></OrangeButton>
+              <OrangeButton
+               Title="CONCLUIR"
+               onClick={async () => {
+                if(activity){
+                  console.log(activity);
+                  await ActivityService.close(activity)
+                  props.refetch()
+                }
+              }}
+               ></OrangeButton>
             </div>
           </Accordion.Body>
         </Accordion.Item>

@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import style from "../../styles/tasks/GrayTask.module.scss";
 import { Container, Row, Col, Stack, Modal,Accordion } from "react-bootstrap";
+import { Activity } from "../../util/types";
 
+interface Props {
+  activity: Activity
+  refetch: () => void
+}
 
-
-export default function GrayTask(props) {
+export default function GrayTask(props: Props) {
   const activity = props.activity;
   return (
     <>

@@ -10,6 +10,7 @@ import { Activity } from "../../util/types";
 
 interface Props {
   activity: Activity
+  refetch: () => void
 }
 
 export default function RedTask(props: Props) {
@@ -43,10 +44,11 @@ export default function RedTask(props: Props) {
             </p>
             <div  className={` ${display} d-flex justify-content-start  mb-2`}>
 
-              <RedButton onClick={() => {
+              <RedButton onClick={async () => {
                 if(activity){
                   console.log(activity);
-                  ActivityService.close(activity)
+                  await ActivityService.close(activity)
+                  props.refetch()
                 }
             }} Title="CONCLUIR"></RedButton>
             </div>
